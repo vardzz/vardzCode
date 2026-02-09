@@ -440,7 +440,7 @@ const Page = () => {
           </span>
         </Link>
         <p className="relative z-10 text-white text-xs md:text-sm font-medium tracking-wide text-center" style={{ color: 'white' }}>
-          @2025 Jericho Varde. All Rights Reserved.
+          @2026 Jericho Varde. All Rights Reserved.
         </p>
       </footer>
     </div >
