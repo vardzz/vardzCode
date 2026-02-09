@@ -17,6 +17,29 @@ import {
 import { TbBrandVscode } from "react-icons/tb";
 import { FaJava } from "react-icons/fa";
 
+const TECH_STACK = [
+  { name: "HTML", icon: <SiHtml5 size={50} />, color: "hover:text-[#E34F26]" },
+  { name: "CSS", icon: <SiCss3 size={50} />, color: "hover:text-[#1572B6]" },
+  { name: "JavaScript", icon: <SiJavascript size={50} />, color: "hover:text-[#F7DF1E]" },
+  { name: "Java", icon: <FaJava size={50} />, color: "hover:text-[#007396]" },
+  { name: "Python", icon: <SiPython size={50} />, color: "hover:text-[#3776AB]" },
+  { name: "PHP", icon: <SiPhp size={50} />, color: "hover:text-[#777BB4]" },
+  { name: "Laravel", icon: <SiLaravel size={50} />, color: "hover:text-[#FF2D20]" },
+  { name: "Google Cloud", icon: <SiGooglecloud size={50} />, color: "hover:text-[#4285F4]" },
+  { name: "React", icon: <SiReact size={50} />, color: "hover:text-[#61DAFB]" },
+  { name: "Next.js", icon: <SiNextdotjs size={50} />, color: "hover:text-white" },
+  { name: "TypeScript", icon: <SiTypescript size={50} />, color: "hover:text-[#3178C6]" },
+  { name: "Tailwind CSS", icon: <SiTailwindcss size={50} />, color: "hover:text-[#06B6D4]" },
+  { name: "Node.js", icon: <SiNodedotjs size={50} />, color: "hover:text-[#339933]" },
+  { name: "PostgreSQL", icon: <SiPostgresql size={50} />, color: "hover:text-[#4169E1]" },
+  { name: "AWS", icon: <SiAmazonwebservices size={50} />, color: "hover:text-[#FF9900]" },
+  { name: "Docker", icon: <SiDocker size={50} />, color: "hover:text-[#2496ED]" },
+  { name: "Git", icon: <SiGit size={50} />, color: "hover:text-[#F05032]" },
+  { name: "Figma", icon: <SiFigma size={50} />, color: "hover:text-[#F24E1E]" },
+  { name: "Vercel", icon: <SiVercel size={50} />, color: "hover:text-white" },
+  { name: "VS Code", icon: <TbBrandVscode size={50} />, color: "hover:text-[#007ACC]" },
+];
+
 const Page = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
@@ -286,9 +309,9 @@ const Page = () => {
               transition={{ delay: 0.2 }}
               className="flex flex-wrap gap-3"
             >
-              {['Web Development', 'Cloud Computing', 'UI/UX Design', 'React', 'Next.js', 'AWS'].map((skill) => (
-                <span key={skill} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs md:text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors cursor-default backdrop-blur-sm">
-                  {skill}
+              {TECH_STACK.map((tech) => (
+                <span key={tech.name} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs md:text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors cursor-default backdrop-blur-sm">
+                  {tech.name}
                 </span>
               ))}
             </motion.div>
@@ -372,49 +395,7 @@ const Page = () => {
               }}
             >
               {/* Duplicate the array to create seamless loop */}
-              {[...[
-                { name: "HTML", icon: <SiHtml5 size={50} />, color: "hover:text-[#E34F26]" },
-                { name: "CSS", icon: <SiCss3 size={50} />, color: "hover:text-[#1572B6]" },
-                { name: "JavaScript", icon: <SiJavascript size={50} />, color: "hover:text-[#F7DF1E]" },
-                { name: "Java", icon: <FaJava size={50} />, color: "hover:text-[#007396]" },
-                { name: "Python", icon: <SiPython size={50} />, color: "hover:text-[#3776AB]" },
-                { name: "PHP", icon: <SiPhp size={50} />, color: "hover:text-[#777BB4]" },
-                { name: "Laravel", icon: <SiLaravel size={50} />, color: "hover:text-[#FF2D20]" },
-                { name: "Google Cloud", icon: <SiGooglecloud size={50} />, color: "hover:text-[#4285F4]" },
-                { name: "React", icon: <SiReact size={50} />, color: "hover:text-[#61DAFB]" },
-                { name: "Next.js", icon: <SiNextdotjs size={50} />, color: "hover:text-white" },
-                { name: "TypeScript", icon: <SiTypescript size={50} />, color: "hover:text-[#3178C6]" },
-                { name: "Tailwind CSS", icon: <SiTailwindcss size={50} />, color: "hover:text-[#06B6D4]" },
-                { name: "Node.js", icon: <SiNodedotjs size={50} />, color: "hover:text-[#339933]" },
-                { name: "PostgreSQL", icon: <SiPostgresql size={50} />, color: "hover:text-[#4169E1]" },
-                { name: "AWS", icon: <SiAmazonwebservices size={50} />, color: "hover:text-[#FF9900]" },
-                { name: "Docker", icon: <SiDocker size={50} />, color: "hover:text-[#2496ED]" },
-                { name: "Git", icon: <SiGit size={50} />, color: "hover:text-[#F05032]" },
-                { name: "Figma", icon: <SiFigma size={50} />, color: "hover:text-[#F24E1E]" },
-                { name: "Vercel", icon: <SiVercel size={50} />, color: "hover:text-white" },
-                { name: "VS Code", icon: <TbBrandVscode size={50} />, color: "hover:text-[#007ACC]" },
-              ], ...[
-                { name: "HTML", icon: <SiHtml5 size={50} />, color: "hover:text-[#E34F26]" },
-                { name: "CSS", icon: <SiCss3 size={50} />, color: "hover:text-[#1572B6]" },
-                { name: "JavaScript", icon: <SiJavascript size={50} />, color: "hover:text-[#F7DF1E]" },
-                { name: "Java", icon: <FaJava size={50} />, color: "hover:text-[#007396]" },
-                { name: "Python", icon: <SiPython size={50} />, color: "hover:text-[#3776AB]" },
-                { name: "PHP", icon: <SiPhp size={50} />, color: "hover:text-[#777BB4]" },
-                { name: "Laravel", icon: <SiLaravel size={50} />, color: "hover:text-[#FF2D20]" },
-                { name: "Google Cloud", icon: <SiGooglecloud size={50} />, color: "hover:text-[#4285F4]" },
-                { name: "React", icon: <SiReact size={50} />, color: "hover:text-[#61DAFB]" },
-                { name: "Next.js", icon: <SiNextdotjs size={50} />, color: "hover:text-white" },
-                { name: "TypeScript", icon: <SiTypescript size={50} />, color: "hover:text-[#3178C6]" },
-                { name: "Tailwind CSS", icon: <SiTailwindcss size={50} />, color: "hover:text-[#06B6D4]" },
-                { name: "Node.js", icon: <SiNodedotjs size={50} />, color: "hover:text-[#339933]" },
-                { name: "PostgreSQL", icon: <SiPostgresql size={50} />, color: "hover:text-[#4169E1]" },
-                { name: "AWS", icon: <SiAmazonwebservices size={50} />, color: "hover:text-[#FF9900]" },
-                { name: "Docker", icon: <SiDocker size={50} />, color: "hover:text-[#2496ED]" },
-                { name: "Git", icon: <SiGit size={50} />, color: "hover:text-[#F05032]" },
-                { name: "Figma", icon: <SiFigma size={50} />, color: "hover:text-[#F24E1E]" },
-                { name: "Vercel", icon: <SiVercel size={50} />, color: "hover:text-white" },
-                { name: "VS Code", icon: <TbBrandVscode size={50} />, color: "hover:text-[#007ACC]" },
-              ]].map((tech, index) => (
+              {[...TECH_STACK, ...TECH_STACK].map((tech, index) => (
                 <motion.div
                   key={`${tech.name}-${index}`}
                   animate={{
@@ -443,16 +424,24 @@ const Page = () => {
       </section>
 
       {/* 4. Footer */}
-      <footer className="absolute bottom-6 md:bottom-10 w-full px-6 flex justify-center z-20">
-        <div className="flex items-center gap-2 md:gap-4 text-[10px] md:text-xs font-semibold uppercase tracking-widest text-gray-500 opacity-80">
-          <div className="h-[1px] w-12 md:w-40 bg-gradient-to-r from-transparent to-gray-700" />
-          <span className="hidden sm:inline">Scroll down</span>
-          <div className="h-5 w-3 md:h-6 md:w-3.5 border border-gray-500 rounded-full flex justify-center pt-1">
-            <div className="w-0.5 h-1 md:h-1.5 bg-gray-400 rounded-full animate-bounce" />
+      <footer className="w-full py-12 bg-black border-t border-white/10 flex flex-col items-center justify-center gap-6 z-20">
+        <Link href="/" className="flex items-center gap-3 cursor-pointer group select-none">
+          <div className="relative flex items-center justify-center">
+            <Image
+              src={logo}
+              alt="Vardz Logo"
+              width={120}
+              height={40}
+              className="w-10 md:w-12 h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+            />
           </div>
-          <span className="hidden sm:inline">to see more</span>
-          <div className="h-[1px] w-12 md:w-40 bg-gradient-to-l from-transparent to-gray-700" />
-        </div>
+          <span className="relative z-10 text-xl font-bold tracking-tight text-center text-white group-hover:text-gray-300 transition-colors leading-none pt-1" style={{ color: 'white' }}>
+            Vardz
+          </span>
+        </Link>
+        <p className="relative z-10 text-white text-xs md:text-sm font-medium tracking-wide text-center" style={{ color: 'white' }}>
+          @2025 Jericho Varde. All Rights Reserved.
+        </p>
       </footer>
     </div >
   );
