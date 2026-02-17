@@ -2,7 +2,9 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight, Cloud } from "lucide-react";
+import workspaceBw from "@/components/assets/workspace_bw.jpg";
 
 const SkillsAndPassion = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -25,26 +27,30 @@ const SkillsAndPassion = () => {
     return (
         <section
             ref={containerRef}
-            className="relative w-full min-h-screen bg-black text-white overflow-hidden py-24 md:py-32 px-6 md:px-20 border-t border-white/5"
+            className="relative w-full bg-black text-white overflow-hidden border-t border-white/5"
         >
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            <div className="w-full grid grid-cols-1 lg:grid-cols-2 lg:gap-0 gap-16 items-start">
 
                 {/* Left Column: Parallax Workspace Image */}
-                <div className="relative w-full aspect-[3/4] lg:h-[800px] rounded-2xl overflow-hidden bg-zinc-900 border border-white/5 group">
-                    <motion.div style={{ y }} className="relative w-full h-[120%] -top-[10%] flex items-center justify-center bg-zinc-900">
-                        {/* Placeholder for Workspace Image */}
-                        <div className="text-center p-6">
-                            <p className="text-white/20 text-lg uppercase tracking-widest font-bold">Workspace Image</p>
-                            <p className="text-white/10 text-sm mt-2">Replace with high-contrast B&W photo</p>
-                        </div>
-
-                        {/* Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 opacity-80" />
-                    </motion.div>
+                <div className="hidden lg:block relative w-full h-full bg-zinc-900 border-r border-white/5">
+                    <div className="sticky top-24 h-screen overflow-hidden">
+                        <motion.div style={{ y }} className="relative w-full h-full">
+                            <Image
+                                src={workspaceBw}
+                                alt="Developer Workspace"
+                                fill
+                                className="object-cover grayscale contrast-125 opacity-60"
+                                sizes="50vw"
+                                priority
+                            />
+                            {/* Overlay Gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/80 opacity-90" />
+                        </motion.div>
+                    </div>
                 </div>
 
                 {/* Right Column: Content Stack */}
-                <div className="flex flex-col gap-10 lg:pt-12">
+                <div className="flex flex-col gap-10 lg:pl-20 lg:pr-20 lg:py-24 px-6">
 
                     {/* Header Group */}
                     <motion.div
@@ -83,7 +89,6 @@ const SkillsAndPassion = () => {
                             </button>
                         </div>
                     </motion.div>
-
 
                     {/* Feature Cards Waterfall */}
                     <div className="flex flex-col gap-6 mt-8">
