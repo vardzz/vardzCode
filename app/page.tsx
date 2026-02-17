@@ -1,10 +1,8 @@
 "use client";
 
 import React from 'react';
-import { LayoutGrid } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Button } from "@/components/ui/button";
-import { CustomCursor } from "@/components/ui/CustomCursor";
+
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '@/components/icon/logo.png';
@@ -16,6 +14,7 @@ import {
 } from "react-icons/si";
 import { TbBrandVscode } from "react-icons/tb";
 import { FaJava } from "react-icons/fa";
+import SkillsAndPassion from "@/components/SkillsAndPassion";
 
 const TECH_STACK = [
   { name: "HTML", icon: <SiHtml5 size={50} />, color: "hover:text-[#E34F26]" },
@@ -48,9 +47,6 @@ const Page = () => {
 
   return (
     <div className="relative min-h-screen bg-[#000000] text-white overflow-x-hidden font-sans selection:bg-white/20">
-
-      {/* 0. Custom Cursor */}
-      <CustomCursor />
 
       {/* 3. Background Graphics: Advanced Gradient Smoke */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -229,7 +225,7 @@ const Page = () => {
           transition={{ delay: 0.2 }}
           className="max-w-[90%] md:max-w-2xl text-gray-400 text-xs sm:text-sm md:text-lg leading-relaxed mb-8 md:mb-12 tracking-wide mx-auto"
         >
-          I'm a Computer Science student passionate about building meaningful and
+          I&apos;m a Computer Science student passionate about building meaningful and
           impactful software. I enjoy exploring modern technologies, developing
           applications, and expanding my skills through real-world projects.
         </motion.p>
@@ -296,7 +292,7 @@ const Page = () => {
               transition={{ delay: 0.1 }}
               className="text-gray-400 text-sm md:text-base leading-relaxed max-w-lg"
             >
-              I'm Jericho Varde, a passionate <span className="text-white font-medium">Software Engineer & Cloud Enthusiast</span> based in the Philippines. I specialize in crafting robust web applications and scalable cloud architectures, blending technical precision with creative problem-solving to elevate digital experiences.
+              I&apos;m Jericho Varde, a passionate <span className="text-white font-medium">Software Engineer & Cloud Enthusiast</span> based in the Philippines. I specialize in crafting robust web applications and scalable cloud architectures, blending technical precision with creative problem-solving to elevate digital experiences.
             </motion.p>
 
             <div className="w-full h-[1px] bg-white/10 my-2" />
@@ -384,12 +380,12 @@ const Page = () => {
 
 
           {/* Infinite Carousel Container */}
-          <div className="flex overflow-hidden w-full mask-linear-fade">
+          <div className="flex overflow-hidden w-full mask-linear-fade py-12">
             <motion.div
-              className="flex gap-8 md:gap-12 py-10 px-4"
+              className="flex gap-8 md:gap-12 px-4"
               animate={{ x: ["0%", "-50%"] }}
               transition={{
-                duration: 40,
+                duration: 60, // Slower scrolling for smoother feel
                 repeat: Infinity,
                 ease: "linear",
               }}
@@ -399,19 +395,20 @@ const Page = () => {
                 <motion.div
                   key={`${tech.name}-${index}`}
                   animate={{
-                    y: [0, -20, 0], // The "wave" motion on the box itself
+                    y: [0, -20, 0], // Sine wave vertical motion
                   }}
                   transition={{
-                    duration: 2 + Math.random(), // Random duration for organic feel
+                    duration: 4, // Fixed duration for synchronized wave
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: index * 0.001, // Stagger effect
+                    delay: index * 0.2, // Linear delay creates the traveling wave
                   }}
-                  className={`flex-shrink-0 flex items-center justify-center p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all duration-300 group cursor-default ${tech.color}`}
+                  className={`relative flex-shrink-0 w-24 h-24 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group cursor-default ${tech.color}`}
                 >
+                  <div className="absolute inset-0 rounded-full bg-white/5 blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
                   <div
                     title={tech.name}
-                    className="text-gray-400 group-hover:text-inherit transition-colors duration-300"
+                    className="text-white/80 group-hover:text-inherit transition-colors duration-300 relative z-10"
                   >
                     {tech.icon}
                   </div>
@@ -422,6 +419,9 @@ const Page = () => {
 
         </div>
       </section>
+
+      {/* 3. Skills & Passion Section */}
+      <SkillsAndPassion />
 
       {/* 4. Footer */}
       <footer className="w-full py-12 bg-black border-t border-white/10 flex flex-col items-center justify-center gap-6 z-20">
