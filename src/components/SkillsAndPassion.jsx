@@ -4,10 +4,10 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Cloud } from "lucide-react";
-import workspaceBw from "@/components/assets/workspace_bw.jpg";
+const workspaceBw = "/workspace_bw.jpg";
 
 const SkillsAndPassion = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"],

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '@/components/icon/logo.png';
-import Vardz from '@/components/assets/Vardz.jpg';
+const Vardz = '/Vardz.jpg';
 import {
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs,
   SiPostgresql, SiAmazonwebservices, SiDocker, SiGit, SiFigma, SiVercel,
