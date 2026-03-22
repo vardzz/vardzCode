@@ -29,3 +29,27 @@ export const TECH_STACK = [
     { name: "Vercel", icon: <SiVercel size={50} />, color: "hover:text-white" },
     { name: "VS Code", icon: <TbBrandVscode size={50} />, color: "hover:text-[#007ACC]" },
 ];
+
+export const PROJECTS = [
+    {
+        title: "CloudFlow Architecture",
+        desc: "Automated CI/CD pipeline design for serverless applications using AWS Lambda and GitHub Actions.",
+        tech: ["AWS", "GitHub Actions", "Node.js"],
+        link: "#",
+        status: "Completed"
+    },
+    {
+        title: "Vardz UI Kit",
+        desc: "A premium React component library focusing on high-end animations and glassmorphic design principles.",
+        tech: ["React", "Framer Motion", "Tailwind"],
+        link: "#",
+        status: "In Progress"
+    },
+    {
+        title: "SkyNode Dashboard",
+        desc: "Real-time monitoring dashboard for multi-cloud infrastructure, featuring live performance metrics.",
+        tech: ["Next.js", "TypeScript", "GCP"],
+        link: "#",
+        status: "Beta"
+    }
+];

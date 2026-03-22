@@ -12,32 +12,23 @@ import Experience from "@/components/custom/Experience";
 import SkillsAndPassion from "@/components/custom/SkillsAndPassion";
 
 const Page = () => {
-  const mouseX = useMotionValue(50);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 150 };
-  const mouseXSpring = useSpring(mouseX, springConfig);
-  const mouseYSpring = useSpring(mouseY, springConfig);
-
-  const background = useMotionTemplate`radial-gradient(ellipse 80% 60% at ${mouseXSpring}% ${mouseYSpring}%, rgba(226, 232, 240, 0.15), transparent 70%), #000000`;
-
-  React.useEffect(() => {
-    const handleMouseMove = (e) => {
-      mouseX.set((e.clientX / window.innerWidth) * 100);
-      mouseY.set((e.clientY / window.innerHeight) * 100);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
-
   return (
     <div className="relative min-h-screen bg-[#000000] text-white overflow-x-hidden font-sans selection:bg-white/20">
 
-      {/* Background Graphic: Pearl Mist Top Glow (Interactive) */}
-      <motion.div
+      {/* Background Layer 1: Ambient Glow (Matching PatternCraft Reference) */}
+      <div
         className="fixed inset-0 z-0 pointer-events-none"
-        style={{ background }}
+        style={{
+          background: "radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.03) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Background Layer 2: Sharp Striped Dark (Visible & Premium) */}
+      <div
+        className="fixed inset-0 z-[1] pointer-events-none"
+        style={{
+          background: "repeating-linear-gradient(45deg, #000 0px, #111 2px, #000 4px, #222 6px)",
+        }}
       />
 
       {/* Hero Section */}
@@ -119,11 +110,11 @@ const Page = () => {
             <span className="relative z-10">Get Started Now</span>
           </button>
 
-          <button className="group relative w-full sm:w-auto px-6 md:px-8 py-3 md:py-3.5 bg-black/40 text-white text-sm md:text-base font-medium rounded-full cursor-pointer overflow-hidden transition-all hover:scale-105 border border-white/5">
+          <a href="#projects" className="group relative w-full sm:w-auto px-6 md:px-8 py-3 md:py-3.5 bg-black/40 text-white text-sm md:text-base font-medium rounded-full cursor-pointer overflow-hidden transition-all hover:scale-105 border border-white/5 text-center">
             <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent opacity-30" />
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-white/20 blur-[15px] group-hover:bg-white/40 transition-colors" />
             <span className="relative z-10">See Projects</span>
-          </button>
+          </a>
         </motion.div>
       </main>
 

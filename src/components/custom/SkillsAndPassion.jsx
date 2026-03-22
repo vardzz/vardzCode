@@ -3,7 +3,8 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, Cloud } from "lucide-react";
+import { ArrowRight, Cloud, ExternalLink, Code2 } from "lucide-react";
+import { PROJECTS } from "./constants";
 const workspaceBw = "/workspace_bw.jpg";
 
 const SkillsAndPassion = () => {
@@ -27,7 +28,8 @@ const SkillsAndPassion = () => {
     return (
         <section
             ref={containerRef}
-            className="relative w-full text-white overflow-hidden"
+            id="projects"
+            className="relative w-full text-white overflow-hidden scroll-mt-24"
         >
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 lg:gap-0 gap-16 items-start">
 
@@ -39,7 +41,7 @@ const SkillsAndPassion = () => {
                                 src={workspaceBw}
                                 alt="Developer Workspace"
                                 fill
-                                className="object-cover grayscale contrast-125 opacity-60"
+                                className="object-cover grayscale contrast-125 opacity-40 group-hover:opacity-70 transition-opacity duration-700"
                                 sizes="50vw"
                                 priority
                             />
@@ -62,7 +64,7 @@ const SkillsAndPassion = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
+                        viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.8 }}
                         className="space-y-6"
                     >
@@ -143,6 +145,62 @@ const SkillsAndPassion = () => {
 
                                 {/* Subtle scale interaction */}
                                 <div className="absolute inset-0 pointer-events-none border border-white/0 group-hover:border-white/10 rounded-2xl transition-all duration-500 group-hover:scale-[1.02]" />
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Projects Section Header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mt-20 space-y-4"
+                    >
+                        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">Featured Projects</h2>
+                        <p className="text-gray-400 text-sm md:text-base max-w-md">
+                            A curated selection of my work in full-stack development and cloud architecture.
+                        </p>
+                    </motion.div>
+
+                    {/* Projects Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-20">
+                        {PROJECTS.map((project, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="group relative p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-white/20 transition-all duration-300"
+                            >
+                                <div className="absolute top-4 right-4 flex gap-2">
+                                    <span className="text-[10px] uppercase tracking-widest text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded-full border border-blue-400/20">
+                                        {project.status}
+                                    </span>
+                                </div>
+                                <div className="space-y-4">
+                                    <div className="p-3 w-fit rounded-xl bg-white/5 text-white/40 group-hover:text-white group-hover:bg-white/10 transition-all">
+                                        <Code2 size={24} />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h3 className="text-xl font-bold">{project.title}</h3>
+                                        <p className="text-sm text-gray-500 line-clamp-2 group-hover:text-gray-400 transition-colors">
+                                            {project.desc}
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.tech.map((t, index) => (
+                                            <span key={index} className="text-[10px] text-gray-400 border border-white/5 px-2 py-0.5 rounded-md">
+                                                {t}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <div className="pt-2">
+                                        <a href={project.link} className="inline-flex items-center gap-2 text-sm font-medium text-white/50 group-hover:text-white transition-all">
+                                            Case Study <ExternalLink size={14} />
+                                        </a>
+                                    </div>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
