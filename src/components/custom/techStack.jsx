@@ -6,7 +6,7 @@ import { TECH_STACK } from './constants';
 
 const TechStack = () => {
     return (
-        <section id="tech-stack" className="relative z-10 w-full px-6 md:px-20 py-20 bg-black text-white overflow-hidden border-t border-white/5">
+        <section id="tech-stack" className="relative z-10 w-full px-6 md:px-20 py-20 text-white overflow-hidden">
             <motion.div 
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}

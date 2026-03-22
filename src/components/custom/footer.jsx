@@ -12,7 +12,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-black text-white pt-32 md:pt-48 pb-8 px-6 md:px-16 lg:px-20 flex flex-col relative z-20 overflow-hidden">
+    <footer className="w-full text-white pt-32 md:pt-48 pb-8 px-6 md:px-16 lg:px-20 flex flex-col relative z-20 overflow-hidden">
       
       {/* Typographic Hero */}
       <motion.div 
@@ -65,7 +65,7 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 + (index * 0.1) }}
-              className="group relative text-zinc-400 hover:text-white text-sm md:text-base font-medium transition-colors duration-500"
+              className="group relative text-zinc-400 hover:text-white text-sm md:text-base font-medium transition-colors duration-500 cursor-pointer"
             >
               <span className="inline-block transition-transform duration-500 group-hover:-translate-y-1">
                 {net.name}

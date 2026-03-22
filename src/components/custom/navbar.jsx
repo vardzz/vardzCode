@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from '@/components/icon/logo.png';
+const logo = '/icon.png';
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -34,14 +34,14 @@ const Navbar = () => {
             {/* Desktop Nav */}
             <div className="hidden md:flex gap-8 items-center text-base font-medium text-gray-400">
                 {navItems.map((item) => (
-                    <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className="hover:text-white transition-all">
+                    <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className="hover:text-white transition-all cursor-pointer">
                         {item}
                     </a>
                 ))}
             </div>
 
             {/* Mobile Nav Toggle */}
-            <div className="md:hidden z-50" onClick={toggleMenu}>
+            <div className="md:hidden z-50 cursor-pointer" onClick={toggleMenu}>
                 <div className="w-6 h-5 flex flex-col justify-between cursor-pointer">
                     <span className={`w-full h-[2px] bg-white transition-all transform ${isMobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
                     <span className={`w-full h-[2px] bg-white transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
@@ -61,7 +61,7 @@ const Navbar = () => {
                             key={item}
                             href={`#${item.toLowerCase().replace(' ', '-')}`}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="text-gray-400 hover:text-white transition-all"
+                            className="text-gray-400 hover:text-white transition-all cursor-pointer"
                         >
                             {item}
                         </a>

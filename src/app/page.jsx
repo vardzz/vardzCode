@@ -15,59 +15,13 @@ const Page = () => {
   return (
     <div className="relative min-h-screen bg-[#000000] text-white overflow-x-hidden font-sans selection:bg-white/20">
 
-      {/* Background Graphics: Advanced Gradient Smoke */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
-
-        <motion.div
-          animate={{
-            x: ["-20%", "20%", "-20%"],
-            y: ["-20%", "20%", "-20%"],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] rounded-full opacity-20 blur-[80px] md:blur-[100px] mix-blend-screen"
-          style={{
-            background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)',
-          }}
-        />
-
-        <motion.div
-          animate={{
-            x: ["20%", "-20%", "20%"],
-            y: ["10%", "-10%", "10%"],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-[20%] right-[-10%] w-[90vw] h-[90vw] md:w-[60vw] md:h-[60vw] rounded-full opacity-15 blur-[100px] md:blur-[120px] mix-blend-screen"
-          style={{
-            background: 'radial-gradient(circle, rgba(200,200,255,0.1) 0%, transparent 70%)',
-          }}
-        />
-
-        <motion.div
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-[-20%] left-[20%] w-[100vw] h-[60vh] md:w-[70vw] md:h-[50vh] rounded-full blur-[80px] md:blur-[90px] mix-blend-screen"
-          style={{
-            background: 'radial-gradient(ellipse, rgba(255,255,255,0.08) 0%, transparent 70%)',
-          }}
-        />
-      </div>
+      {/* Background Graphic: Pearl Mist Top Glow */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(226, 232, 240, 0.15), transparent 70%), #000000",
+        }}
+      />
 
       {/* Hero Section */}
       <main className="relative z-10 flex flex-col items-center justify-center text-center px-4 pt-32 md:pt-40 pb-20 overflow-hidden min-h-screen">

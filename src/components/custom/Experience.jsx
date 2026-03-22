@@ -23,7 +23,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="relative z-10 w-full px-6 md:px-16 lg:px-20 py-32 bg-black text-white overflow-hidden scroll-mt-20 border-t border-white/5">
+    <section id="experience" className="relative z-10 w-full px-6 md:px-16 lg:px-20 py-32 text-white overflow-hidden scroll-mt-20">
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

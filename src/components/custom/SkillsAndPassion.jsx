@@ -27,7 +27,7 @@ const SkillsAndPassion = () => {
     return (
         <section
             ref={containerRef}
-            className="relative w-full bg-black text-white overflow-hidden border-t border-white/5"
+            className="relative w-full text-white overflow-hidden"
         >
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 lg:gap-0 gap-16 items-start">
 
@@ -83,14 +83,14 @@ const SkillsAndPassion = () => {
 
                         {/* CTAs */}
                         <div className="flex flex-wrap gap-4 pt-4">
-                            <button className="relative group px-8 py-4 bg-white text-black rounded-full font-medium overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]">
+                            <button className="relative group px-8 py-4 bg-white text-black rounded-full font-medium overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer">
                                 <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <span className="relative flex items-center gap-2">
                                     View Tech Stack <ArrowRight size={18} />
                                 </span>
                             </button>
 
-                            <button className="px-8 py-4 rounded-full border border-white/20 text-white font-medium hover:bg-white/5 transition-all hover:scale-105 backdrop-blur-sm flex items-center gap-2">
+                            <button className="px-8 py-4 rounded-full border border-white/20 text-white font-medium hover:bg-white/5 transition-all hover:scale-105 backdrop-blur-sm flex items-center gap-2 cursor-pointer">
                                 <Cloud size={18} className="text-blue-400" /> Cloud Roadmap
                             </button>
                         </div>
