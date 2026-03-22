@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,15 +12,32 @@ import Experience from "@/components/custom/Experience";
 import SkillsAndPassion from "@/components/custom/SkillsAndPassion";
 
 const Page = () => {
+  const mouseX = useMotionValue(50);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 150 };
+  const mouseXSpring = useSpring(mouseX, springConfig);
+  const mouseYSpring = useSpring(mouseY, springConfig);
+
+  const background = useMotionTemplate`radial-gradient(ellipse 80% 60% at ${mouseXSpring}% ${mouseYSpring}%, rgba(226, 232, 240, 0.15), transparent 70%), #000000`;
+
+  React.useEffect(() => {
+    const handleMouseMove = (e) => {
+      mouseX.set((e.clientX / window.innerWidth) * 100);
+      mouseY.set((e.clientY / window.innerHeight) * 100);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
+
   return (
     <div className="relative min-h-screen bg-[#000000] text-white overflow-x-hidden font-sans selection:bg-white/20">
 
-      {/* Background Graphic: Pearl Mist Top Glow */}
-      <div
+      {/* Background Graphic: Pearl Mist Top Glow (Interactive) */}
+      <motion.div
         className="fixed inset-0 z-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(226, 232, 240, 0.15), transparent 70%), #000000",
-        }}
+        style={{ background }}
       />
 
       {/* Hero Section */}
