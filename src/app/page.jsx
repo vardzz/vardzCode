@@ -8,6 +8,7 @@ import Link from 'next/link';
 // Component Imports
 import About from "@/components/custom/about";
 import TechStack from "@/components/custom/techStack";
+import Experience from "@/components/custom/Experience";
 import SkillsAndPassion from "@/components/custom/SkillsAndPassion";
 
 const Page = () => {
@@ -157,6 +158,7 @@ const Page = () => {
 
       <About />
       <TechStack />
+      <Experience />
       <SkillsAndPassion />
     </div >
   );
