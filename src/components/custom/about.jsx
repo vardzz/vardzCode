@@ -10,7 +10,13 @@ const Vardz = '/Vardz.jpg';
 const About = () => {
     return (
         <section id="about" className="relative z-10 w-full px-6 md:px-20 py-20 bg-black text-white overflow-hidden">
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <motion.div 
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+                className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center"
+            >
 
                 {/* Left Column: Identity & Information */}
                 <div className="flex flex-col gap-8">
@@ -116,7 +122,7 @@ const About = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
                 </motion.div>
 
-            </div>
+            </motion.div>
         </section>
     );
 };

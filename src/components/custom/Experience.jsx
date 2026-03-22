@@ -24,7 +24,13 @@ const Experience = () => {
 
   return (
     <section id="experience" className="relative z-10 w-full px-6 md:px-16 lg:px-20 py-32 bg-black text-white overflow-hidden scroll-mt-20 border-t border-white/5">
-      <div className="w-full flex flex-col items-center max-w-7xl mx-auto">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+        className="w-full flex flex-col items-center max-w-7xl mx-auto"
+      >
         
         {/* Section Header */}
         <motion.div
@@ -94,7 +100,7 @@ const Experience = () => {
             </div>
 
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

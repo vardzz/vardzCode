@@ -6,8 +6,14 @@ import { TECH_STACK } from './constants';
 
 const TechStack = () => {
     return (
-        <section id="tech-stack" className="relative z-10 w-full px-6 md:px-20 py-20 bg-zinc-950 text-white overflow-hidden border-t border-white/5">
-            <div className="w-full flex flex-col gap-12 items-center">
+        <section id="tech-stack" className="relative z-10 w-full px-6 md:px-20 py-20 bg-black text-white overflow-hidden border-t border-white/5">
+            <motion.div 
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+                className="w-full flex flex-col gap-12 items-center"
+            >
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -60,7 +66,7 @@ const TechStack = () => {
                     </motion.div>
                 </div>
 
-            </div>
+            </motion.div>
         </section>
     );
 };
