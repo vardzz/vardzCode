@@ -49,14 +49,21 @@ export default function Footer() {
           <motion.div variants={itemVariants} className="flex flex-col md:text-right gap-6">
             <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-muted-foreground block">Networks</span>
             <div className="flex gap-8 flex-wrap">
-               {["LinkedIn", "Instagram", "Facebook", "Github"].map((net, i) => (
+               {[
+                 { label: "LinkedIn", href: "https://www.linkedin.com/in/vardz/" },
+                 { label: "Instagram", href: "https://www.instagram.com/v_ardzz/" },
+                 { label: "Facebook", href: "https://www.facebook.com/Changeiscomingtoday" },
+                 { label: "Github", href: "https://github.com/vardzz" }
+               ].map((net, i) => (
                  <motion.a 
                    key={i} 
-                   href="#" 
+                   href={net.href}
+                   target="_blank"
+                   rel="noopener noreferrer"
                    whileHover={{ scale: 1.1, color: "var(--foreground)" }}
                    className="text-[10px] font-bold text-muted-foreground transition-colors duration-500 uppercase tracking-[0.2em] cursor-pointer"
                  >
-                   {net}
+                   {net.label}
                  </motion.a>
                ))}
             </div>

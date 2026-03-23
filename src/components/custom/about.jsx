@@ -74,7 +74,7 @@ export default function About() {
               Download CV
             </button>
             <button className="bg-transparent text-foreground border border-foreground py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:bg-foreground/5 transition-all cursor-pointer">
-              My Process
+              Contact Me
             </button>
           </motion.div>
         </motion.div>
