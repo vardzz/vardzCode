@@ -1,130 +1,60 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { TECH_STACK } from './constants';
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
-const Vardz = '/Vardz.jpg';
+export default function About() {
+  return (
+    <div className="relative w-full bg-black text-white">
+      {/* ABOUT ME ("MEET VARDZ") */}
+      <section id="about" className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 py-32 md:py-48 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+        {/* Left Column */}
+        <motion.div 
+           initial={{ opacity: 0, x: -30 }}
+           whileInView={{ opacity: 1, x: 0 }}
+           viewport={{ once: true, margin: "-100px" }}
+           transition={{ duration: 0.8 }}
+           className="flex flex-col flex-start"
+        >
+          <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-zinc-500 mb-8 block">Identity</span>
+          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-12">Meet Vardz</h2>
+          <p className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed mb-16 max-w-2xl">
+            I'm Jericho Varde, a passionate <strong className="font-bold text-white">Software Engineer & Cloud Enthusiast</strong> based in the Philippines. I specialize in crafting <strong className="font-bold text-white">robust web applications</strong> and <strong className="font-bold text-white">scalable cloud architectures</strong>, blending strict technical precision with creative problem-solving to elevate digital experiences.
+          </p>
+          
+          <div className="flex flex-wrap gap-6">
+            <button className="bg-white text-black py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:bg-zinc-200 transition-colors">
+              Download CV
+            </button>
+            <button className="bg-transparent text-white border border-white py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:bg-white/5 transition-colors">
+              My Process
+            </button>
+          </div>
+        </motion.div>
 
-const About = () => {
-    return (
-        <section id="about" className="relative z-10 w-full px-6 md:px-20 py-20 text-white overflow-hidden">
-            <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-                className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center"
-            >
-
-                {/* Left Column: Identity & Information */}
-                <div className="flex flex-col gap-8">
-                    <motion.h2
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={{
-                            hidden: { opacity: 0 },
-                            visible: {
-                                opacity: 1,
-                                transition: {
-                                    staggerChildren: 0.1,
-                                },
-                            },
-                        }}
-                        className="text-5xl md:text-7xl font-bold tracking-tighter flex flex-wrap"
-                    >
-                        {"Meet Vardz".split("").map((char, index) => (
-                            <motion.span
-                                key={index}
-                                variants={{
-                                    hidden: { opacity: 0, y: 20 },
-                                    visible: { opacity: 1, y: 0 },
-                                }}
-                            >
-                                {char === " " ? "\u00A0" : char}
-                            </motion.span>
-                        ))}
-                    </motion.h2>
-
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-gray-400 text-sm md:text-base leading-relaxed max-w-lg"
-                    >
-                        I&apos;m Jericho Varde, a passionate <span className="text-white font-medium">Software Engineer & Cloud Enthusiast</span> based in the Philippines. I specialize in crafting robust web applications and scalable cloud architectures, blending technical precision with creative problem-solving to elevate digital experiences.
-                    </motion.p>
-
-                    <div className="w-full h-[1px] bg-white/10 my-2" />
-
-                    {/* Skills */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="flex flex-wrap gap-3"
-                    >
-                        {TECH_STACK.map((tech) => (
-                            <span key={tech.name} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs md:text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors cursor-default backdrop-blur-sm">
-                                {tech.name}
-                            </span>
-                        ))}
-                    </motion.div>
-
-                    <div className="w-full h-[1px] bg-white/10 my-2" />
-
-                    {/* Experience Table */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                        className="flex flex-col gap-6 text-sm md:text-base text-gray-400"
-                    >
-                        <div className="grid grid-cols-[1fr_1.5fr_1fr] items-center hover:text-white transition-colors cursor-default">
-                            <span>Freelance</span>
-                            <span>Full-Stack Developer</span>
-                            <span className="text-right">Currently</span>
-                        </div>
-                        <div className="grid grid-cols-[1fr_1.5fr_1fr] items-center hover:text-white transition-colors cursor-default">
-                            <span>Student</span>
-                            <span>Computer Science</span>
-                            <span className="text-right">2023-Present</span>
-                        </div>
-                        <div className="grid grid-cols-[1fr_1.5fr_1fr] items-center hover:text-white transition-colors cursor-default">
-                            <span>Intern</span>
-                            <span>Tech Startup Inc.</span>
-                            <span className="text-right">2022-23</span>
-                        </div>
-                    </motion.div>
-                </div>
-
-                {/* Right Column: Portrait */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-                    whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="relative w-full aspect-square md:aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-950 flex items-center justify-center group"
-                >
-                    <Image
-                        src={Vardz}
-                        alt="Portrait of Jericho"
-                        fill
-                        className="object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
-                    />
-
-                    {/* Overlay Gradient for depth */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-                </motion.div>
-
-            </motion.div>
-        </section>
-    );
-};
-
-export default About;
+        {/* Right Column */}
+        <motion.div 
+           initial={{ opacity: 0, x: 30 }}
+           whileInView={{ opacity: 1, x: 0 }}
+           viewport={{ once: true, margin: "-100px" }}
+           transition={{ duration: 0.8 }}
+           className="relative aspect-[3/4] md:aspect-square lg:aspect-[3/4] bg-zinc-900 overflow-hidden group"
+        >
+          <Image 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqJ8Kn5GHk1YsWmDZtv10m9u5xMrxOVGaWccUoxL3-p-rGepMqpX9wghbnaFZ09S_FRTUyM0hPchLG3jO1i5IGBBS4qlqUKRlLWIGZVeCA1YvOnwbT2z1h3vAja4VYPY0gnN_KAn5VQLYDFN_M97nQk5pbIKZ6-842v6juK8fI7v4D0xJQzBgDZVu8if4VTDpoSGT1SzKQgMA3F30ebovlvZtRKW6HUJeIn9b8hGhImmDReNXJfKYZjJKlf_LF8IY-CxyaVs_oq82_" 
+            alt="Portrait of Jericho Varde"
+            fill
+            className="object-cover grayscale contrast-125 brightness-75 transition-transform duration-[1.5s] group-hover:scale-105"
+          />
+          {/* Micro-badge */}
+          <div className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 w-24 h-24 bg-black border border-white/20 flex items-center justify-center p-4">
+            <span className="text-[9px] uppercase tracking-[0.2em] text-white leading-tight text-center font-bold">
+              Software<br/>Architect<br/>2026
+            </span>
+          </div>
+        </motion.div>
+      </section>
+    </div>
+  );
+}

@@ -1,83 +1,51 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-const logo = '/icon.png';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
-const Navbar = () => {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+export default function Navbar() {
+  const [isDark, setIsDark] = useState(true);
 
-    // Toggle mobile menu
-    const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  // In a real app with next-themes, you'd integrate the actual theme flip here.
+  // For this aesthetic-only exercise, we just toggle the state visually.
+  const toggleTheme = () => setIsDark(!isDark);
 
-    const navItems = ['About', 'Tech Stack', 'Projects', 'Experience', 'Socials'];
+  return (
+    <motion.nav 
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md mix-blend-difference"
+    >
+      <div className="font-black text-white text-xl uppercase tracking-tight">
+        JERICHO.
+      </div>
+      
+      <div className="hidden md:flex gap-16">
+        {["About", "Experience", "Work"].map((link, idx) => (
+          <a 
+            key={idx} 
+            href={`#${link.toLowerCase()}`}
+            className="text-[10px] tracking-[0.2em] uppercase text-white hover:text-zinc-400 transition-colors duration-300 font-medium"
+          >
+            {link}
+          </a>
+        ))}
+      </div>
 
-    return (
-        <nav 
-            className="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-5 md:px-16 backdrop-blur-xl transition-all duration-300 shadow-[0_8px_32px_rgba(0,0,0,0.8)]"
-            style={{ 
-                background: "linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0%, transparent 100%), repeating-linear-gradient(45deg, #000 0px, #111 2px, #000 4px, #222 6px)" 
-            }}
+      <div className="flex items-center">
+        <button 
+          onClick={toggleTheme}
+          className="relative w-12 h-6 rounded-full border border-white/20 bg-transparent flex items-center px-1 overflow-hidden"
+          aria-label="Toggle Theme"
         >
-            <Link href="/" className="flex items-center gap-3 cursor-pointer group select-none">
-                <div className="relative flex items-center justify-center">
-                    <Image
-                        src={logo}
-                        alt="Vardz Logo"
-                        width={120}
-                        height={40}
-                        className="w-10 md:w-12 h-auto object-contain"
-                    />
-                </div>
-                <span className="text-lg md:text-xl font-bold tracking-tight text-white group-hover:text-gray-300 transition-colors leading-none pt-1">
-                    Vardz
-                </span>
-            </Link>
-
-            {/* Desktop Nav */}
-            <div className="hidden md:flex gap-8 items-center text-base font-medium text-gray-400">
-                {navItems.map((item) => (
-                    <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className="hover:text-white transition-all cursor-pointer">
-                        {item}
-                    </a>
-                ))}
-            </div>
-
-            {/* Mobile Nav Toggle */}
-            <div className="md:hidden z-50 cursor-pointer" onClick={toggleMenu}>
-                <div className="w-6 h-5 flex flex-col justify-between cursor-pointer">
-                    <span className={`w-full h-[2px] bg-white transition-all transform ${isMobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
-                    <span className={`w-full h-[2px] bg-white transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
-                    <span className={`w-full h-[2px] bg-white transition-all transform ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-                </div>
-            </div>
-
-            {/* Mobile Menu Overlay */}
-            {isMobileMenuOpen && (
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="absolute top-0 left-0 w-full h-screen backdrop-blur-3xl flex flex-col items-center justify-center gap-8 md:hidden text-2xl border-b border-white/10 shadow-2xl"
-                    style={{ 
-                        background: "linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 0%, transparent 100%), repeating-linear-gradient(45deg, #000 0px, #111 2px, #000 4px, #222 6px)" 
-                    }}
-                >
-                    {navItems.map((item) => (
-                        <a
-                            key={item}
-                            href={`#${item.toLowerCase().replace(' ', '-')}`}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="text-gray-400 hover:text-white transition-all cursor-pointer"
-                        >
-                            {item}
-                        </a>
-                    ))}
-                </motion.div>
-            )}
-        </nav>
-    );
-};
-
-export default Navbar;
+          <motion.div 
+            className="w-4 h-4 rounded-full bg-white"
+            animate={{ x: isDark ? 0 : 22 }}
+            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          />
+        </button>
+      </div>
+    </motion.nav>
+  );
+}

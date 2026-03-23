@@ -1,108 +1,86 @@
 "use client";
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-const Experience = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"],
-  });
-
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
-  const experienceData = [
-    { year: "2025", title: "Currently a 3rd Year BSCS Student", subtitle: "Pamantasan ng Cabuyao" },
-    { year: "2023", title: "Started Bachelor of Science in Computer Science", subtitle: "Pamantasan ng Cabuyao" },
-    { year: "2022", title: "Became interested in coding", subtitle: "Self-taught Journey" },
-    { year: "2022", title: "Finished Senior High", subtitle: "Pamantasan ng Cabuyao" },
-    { year: "2020", title: "Finished Junior High", subtitle: "Bigaa Integrated NHS" },
-    { year: "2016", title: "Finished Elementary", subtitle: "Bigaa Elementary School" },
-    { year: "2011", title: "Studied at Holy Redeemer School of Cabuyao", subtitle: "Early Education" },
+export default function Experience() {
+  const { scrollYProgress } = useScroll();
+  // We can use a subtle parallax for the background datemarks or just rely on standard scrolling
+  
+  const experiences = [
+    { year: "2026 / 01", title: "COURT CATCHER", role: "DEVELOPER", desc: "An application engineered for seamless sports facility reservations and management." },
+    { year: "2026 / 04", title: "HORIZON AI", role: "FRONTEND DEVELOPER", desc: "A specialized refactoring studio optimizing legacy codebases and AI integrations." },
+    { year: "2026 / 08", title: "DENTARA", role: "DEVELOPER", desc: "A cloud-native ecosystem connecting dentistry students with patients." },
+    { year: "2026 / 12", title: "ELDERKEY", role: "DEVELOPER", desc: "A secure, accessible platform engineered for specialized user needs." }
   ];
 
   return (
-    <section id="experience" className="relative z-10 w-full px-6 md:px-16 lg:px-20 py-32 text-white overflow-hidden scroll-mt-20">
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-        className="w-full flex flex-col items-center max-w-7xl mx-auto"
-      >
+    <section id="experience" className="relative bg-black text-white py-32 md:py-48 overflow-hidden">
+      {/* Faint Dark Dotted Grid Background */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(#ffffff22_1px,transparent_1px)] bg-[size:32px_32px] opacity-20 pointer-events-none" />
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12">
         
         {/* Section Header */}
-        <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-center text-center space-y-4 mb-24"
-        >
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md mb-2">
-                <span className="text-xs font-medium tracking-wider uppercase text-gray-400">Timeline</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-tight text-white">
-                Experience
-            </h2>
-        </motion.div>
-
-        {/* Timeline Container */}
-        <div className="relative w-full" ref={containerRef}>
-            
-            {/* The Vertical Line (Track) */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2" />
-            
-            {/* The Animated Line */}
-            <motion.div 
-              className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[1px] bg-zinc-400 origin-top -translate-x-1/2 z-0"
-              style={{ scaleY: pathLength }}
-            />
-
-            {/* Timeline Items */}
-            <div className="flex flex-col gap-16 md:gap-24 relative z-10">
-              {experienceData.map((item, index) => {
-                const isEven = index % 2 === 0;
-
-                return (
-                  <div key={index} className="relative flex flex-col md:flex-row items-start md:items-center w-full group">
-                    
-                    {/* Node/Dot */}
-                    <motion.div 
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                      className="absolute left-8 md:left-1/2 w-6 h-6 rounded-full bg-black border border-white/10 -translate-x-1/2 flex items-center justify-center group-hover:border-white/50 transition-colors duration-500 z-10"
-                    >
-                        <div className="w-2 h-2 rounded-full bg-zinc-800 group-hover:bg-white transition-colors duration-500 shadow-[0_0_10px_rgba(255,255,255,0)] group-hover:shadow-[0_0_15px_rgba(255,255,255,0.6)]" />
-                    </motion.div>
-
-                    {/* Content Container */}
-                    <div className={`w-full md:w-1/2 flex flex-col pl-20 md:pl-0 pt-0.5 md:pt-0 ${isEven ? 'md:pr-20 md:items-end text-left md:text-right' : 'md:ml-auto md:pl-20 md:items-start text-left'}`}>
-                      <motion.div 
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.7, delay: 0.3 }}
-                        className="flex flex-col gap-2 max-w-md"
-                      >
-                        <span className="font-mono text-xs md:text-sm text-zinc-500 font-medium tracking-widest">{item.year}</span>
-                        <h3 className="text-xl md:text-2xl font-bold tracking-tight text-white/90">{item.title}</h3>
-                        <p className="text-sm md:text-base text-zinc-400 font-light mt-1">{item.subtitle}</p>
-                      </motion.div>
-                    </div>
-
-                  </div>
-                );
-              })}
-            </div>
-
+        <div className="mb-32">
+          <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 mb-6 block">Journey</span>
+          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter">The Chronicle</h2>
         </div>
-      </motion.div>
+
+        {/* Timeline Items */}
+        <div className="space-y-40 md:space-y-64 relative">
+          
+          {/* Subtle connecting line down the middle or left */}
+          <div className="absolute top-0 bottom-0 left-[15px] md:left-1/2 w-[1px] bg-white/10" />
+
+          {experiences.map((exp, idx) => {
+            const isEven = idx % 2 === 0;
+
+            return (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="relative flex flex-col md:flex-row items-center w-full"
+              >
+                {/* Background Massive Date Watermark */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[18vw] font-black uppercase text-white/[0.02] tracking-tighter whitespace-nowrap pointer-events-none select-none z-0">
+                  {exp.year}
+                </div>
+
+                {/* Left Side Content Space */}
+                <div className={`w-full md:w-1/2 relative z-10 flex ${isEven ? 'md:justify-end md:pr-20' : 'md:order-2 md:justify-start md:pl-20'}`}>
+                  
+                  {/* Content Box */}
+                  <div className={`relative w-full max-w-lg pl-12 md:pl-0 ${isEven ? 'text-left md:text-right' : 'text-left'}`}>
+                    
+                    {/* Small Square Bullet Component */}
+                    <div className={`absolute top-[10px] md:top-1/2 md:-translate-y-1/2 w-2 h-2 bg-white ${isEven ? 'left-[-4px] md:right-[-84px] md:left-auto' : 'left-[-4px] md:left-[-84px]'}`} />
+
+                    <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-2">
+                      {exp.title}
+                    </h3>
+                    <div className="text-[10px] tracking-[0.2em] uppercase font-bold text-zinc-500 mb-6 block">
+                      {exp.role}
+                    </div>
+                    <p className="text-lg text-zinc-400 font-light leading-relaxed">
+                      {exp.desc}
+                    </p>
+                  </div>
+
+                </div>
+
+                {/* Right Side Empty Space for Staggering */}
+                <div className={`hidden md:block w-1/2 ${isEven ? '' : 'order-1'}`} />
+
+              </motion.div>
+            );
+          })}
+        </div>
+
+      </div>
     </section>
   );
-};
-
-export default Experience;
+}

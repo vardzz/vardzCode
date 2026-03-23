@@ -1,83 +1,54 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
-const Footer = () => {
-  const networks = [
-    { name: 'LinkedIn', href: 'https://linkedin.com/in/vardzz' },
-    { name: 'Instagram', href: 'https://instagram.com/vardzz' },
-    { name: 'Facebook', href: 'https://facebook.com/Changeiscomingtoday' },
-    { name: 'Discord', href: 'https://discord.com/users/vardzz_' },
-  ];
-
+export default function Footer() {
   return (
-    <footer className="w-full text-white pt-32 md:pt-48 pb-8 px-6 md:px-16 lg:px-20 flex flex-col relative z-20 overflow-hidden">
-      
-      {/* Typographic Hero */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9, y: 50 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: [0.215, 0.61, 0.355, 1] }}
-        className="w-full flex items-center justify-center select-none pointer-events-none mb-16 md:mb-20"
-      >
-        <h1 
-          className="font-black text-white text-center"
-          style={{ 
-            fontSize: 'clamp(4.5rem, 22.5vw, 25rem)', 
-            lineHeight: '0.85',
-            letterSpacing: '-0.07em',
-            marginLeft: '-0.06em', 
-            paddingBottom: '0.08em',
-            paddingRight: '0.05em'
-          }}
-        >
-          @vardz
-        </h1>
-      </motion.div>
-
-      {/* Bottom Bar: Networks */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="w-full flex flex-col md:flex-row justify-between items-center md:items-end gap-8 pt-6"
-      >
-        
-        {/* Label */}
-        <div className="flex w-full md:w-auto justify-center md:justify-start">
-          <span className="text-zinc-500 text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] select-none">
-            Networks
-          </span>
-        </div>
-
-        {/* Links */}
-        <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-4">
-          {networks.map((net, index) => (
-            <motion.a 
-              key={net.name}
-              href={net.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 + (index * 0.1) }}
-              className="group relative text-zinc-400 hover:text-white text-sm md:text-base font-medium transition-colors duration-500 cursor-pointer"
+    <footer className="w-full bg-black text-white pt-32 pb-6 md:pb-12 overflow-hidden relative border-t border-white/5">
+       <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-end gap-16 mb-20 md:mb-32">
+          
+          {/* Collaborate */}
+          <div>
+            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 mb-6 block">Collaborate</span>
+            <a 
+              href="mailto:hello@vardz.dev" 
+              className="text-3xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter border-b border-transparent hover:border-white transition-all duration-500"
             >
-              <span className="inline-block transition-transform duration-500 group-hover:-translate-y-1">
-                {net.name}
-              </span>
-            </motion.a>
-          ))}
-        </div>
+              HELLO@VARDZ.DEV
+            </a>
+          </div>
 
-      </motion.div>
-      
+          {/* Networks */}
+          <div className="flex flex-col md:text-right gap-6">
+            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 block">Networks</span>
+            <div className="flex gap-8 flex-wrap">
+               {["Instagram", "LinkedIn", "Dribbble", "Behance"].map((net, i) => (
+                 <a 
+                   key={i} 
+                   href="#" 
+                   className="text-[10px] font-bold text-zinc-400 hover:text-white transition-colors duration-500 uppercase tracking-[0.2em]"
+                 >
+                   {net}
+                 </a>
+               ))}
+            </div>
+          </div>
+
+       </div>
+
+       {/* Massive Fluid Signature */}
+       <div className="w-full text-center md:text-left select-none max-w-[100vw] flex justify-center overflow-hidden mix-blend-difference mb-8">
+         <h1 className="text-[22vw] leading-[0.8] font-black tracking-[-0.08em] uppercase text-white w-full text-center">
+            @VARDZ
+         </h1>
+       </div>
+
+       {/* Bottom Details */}
+       <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center text-[8px] md:text-[10px] text-zinc-500 tracking-[0.2em] uppercase font-bold gap-4">
+         <span>© 2026 ARCHITECT OF DIGITAL ETHER. ALL RIGHTS RESERVED.</span>
+         <span>LOCATED IN THE PHILIPPINES</span>
+       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

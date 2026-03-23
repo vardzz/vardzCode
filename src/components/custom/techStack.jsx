@@ -1,74 +1,63 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { TECH_STACK } from './constants';
+import React from "react";
+import { motion } from "framer-motion";
+import { SiHtml5, SiCss3, SiJavascript, SiPython, SiPhp, SiLaravel, SiGooglecloud, SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiPostgresql, SiAmazonwebservices, SiDocker, SiGit, SiFigma, SiVercel } from "react-icons/si";
+import { FaJava } from "react-icons/fa";
+import { TbBrandVscode } from "react-icons/tb";
 
-const TechStack = () => {
-    return (
-        <section id="tech-stack" className="relative z-10 w-full px-6 md:px-20 py-20 text-white overflow-hidden">
-            <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-                className="w-full flex flex-col gap-12 items-center"
-            >
+export const TECH_STACK = [
+    { name: "HTML", icon: <SiHtml5 size={50} />, color: "hover:text-[#E34F26]" },
+    { name: "CSS", icon: <SiCss3 size={50} />, color: "hover:text-[#1572B6]" },
+    { name: "JavaScript", icon: <SiJavascript size={50} />, color: "hover:text-[#F7DF1E]" },
+    { name: "Java", icon: <FaJava size={50} />, color: "hover:text-[#007396]" },
+    { name: "Python", icon: <SiPython size={50} />, color: "hover:text-[#3776AB]" },
+    { name: "PHP", icon: <SiPhp size={50} />, color: "hover:text-[#777BB4]" },
+    { name: "Laravel", icon: <SiLaravel size={50} />, color: "hover:text-[#FF2D20]" },
+    { name: "Google Cloud", icon: <SiGooglecloud size={50} />, color: "hover:text-[#4285F4]" },
+    { name: "React", icon: <SiReact size={50} />, color: "hover:text-[#61DAFB]" },
+    { name: "Next.js", icon: <SiNextdotjs size={50} />, color: "hover:text-white" },
+    { name: "TypeScript", icon: <SiTypescript size={50} />, color: "hover:text-[#3178C6]" },
+    { name: "Tailwind CSS", icon: <SiTailwindcss size={50} />, color: "hover:text-[#06B6D4]" },
+    { name: "Node.js", icon: <SiNodedotjs size={50} />, color: "hover:text-[#339933]" },
+    { name: "PostgreSQL", icon: <SiPostgresql size={50} />, color: "hover:text-[#4169E1]" },
+    { name: "AWS", icon: <SiAmazonwebservices size={50} />, color: "hover:text-[#FF9900]" },
+    { name: "Docker", icon: <SiDocker size={50} />, color: "hover:text-[#2496ED]" },
+    { name: "Git", icon: <SiGit size={50} />, color: "hover:text-[#F05032]" },
+    { name: "Figma", icon: <SiFigma size={50} />, color: "hover:text-[#F24E1E]" },
+    { name: "Vercel", icon: <SiVercel size={50} />, color: "hover:text-white" },
+    { name: "VS Code", icon: <TbBrandVscode size={50} />, color: "hover:text-[#007ACC]" },
+];
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center space-y-4"
-                >
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">My Tech Stack</h2>
-                    <p className="text-gray-400 max-w-xl mx-auto text-sm md:text-base">
-                        Tools and technologies I use to bring ideas to life.
-                    </p>
-                </motion.div>
+export default function TechStack() {
+  return (
+    <section className="bg-black py-20 border-y border-white/5 overflow-hidden flex items-center relative">
+      <div className="absolute inset-x-0 w-[200vw] sm:w-[300vw] pointer-events-none" />
+      
+      {/* Container for Infinite Scroll */}
+      <div className="flex w-full gap-24 relative overflow-hidden group mask-gradient items-center">
+        
+        <motion.div
+           className="flex items-center gap-24 whitespace-nowrap"
+           animate={{ x: ["0%", "-50%"] }}
+           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+           style={{ minWidth: "100%" }}
+        >
+          {/* Double map to ensure seamless looping without snapping back visibly for most viewport sizes */}
+          {[...TECH_STACK, ...TECH_STACK, ...TECH_STACK].map((tech, idx) => (
+             <div 
+               key={idx} 
+               className={`flex items-center justify-center flex-col gap-4 text-zinc-600 transition-colors duration-500 cursor-pointer ${tech.color}`}
+               title={tech.name}
+             >
+               <div className="transform hover:scale-110 transition-transform duration-300">
+                 {tech.icon}
+               </div>
+             </div>
+          ))}
+        </motion.div>
 
-
-                {/* Infinite Carousel Container */}
-                <div className="flex overflow-hidden w-full mask-linear-fade py-12">
-                    <motion.div
-                        className="flex gap-8 md:gap-12 px-4"
-                        animate={{ x: ["0%", "-50%"] }}
-                        transition={{
-                            duration: 60, // Slower scrolling for smoother feel
-                            repeat: Infinity,
-                            ease: "linear",
-                        }}
-                    >
-                        {/* Duplicate the array to create seamless loop */}
-                        {[...TECH_STACK, ...TECH_STACK].map((tech, index) => (
-                            <motion.div
-                                key={`${tech.name}-${index}`}
-                                animate={{
-                                    y: [0, -20, 0], // Sine wave vertical motion
-                                }}
-                                transition={{
-                                    duration: 4, // Fixed duration for synchronized wave
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                    delay: index * 0.2, // Linear delay creates the traveling wave
-                                }}
-                                className={`relative flex-shrink-0 w-24 h-24 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group cursor-default ${tech.color}`}
-                            >
-                                <div className="absolute inset-0 rounded-full bg-white/5 blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
-                                <div
-                                    title={tech.name}
-                                    className="text-white/80 group-hover:text-inherit transition-colors duration-300 relative z-10"
-                                >
-                                    {tech.icon}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-
-            </motion.div>
-        </section>
-    );
-};
-
-export default TechStack;
+      </div>
+    </section>
+  );
+}
