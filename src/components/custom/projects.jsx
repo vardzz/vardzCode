@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import TypingText from "@/components/custom/typingText";
 
 export default function Projects() {
   const [selectedImg, setSelectedImg] = useState(null);
@@ -159,15 +160,10 @@ export default function Projects() {
                     >
                       {proj.title}
                     </motion.h3>
-                    <motion.p 
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.4 }}
-                      className="text-lg text-zinc-400 font-light leading-relaxed"
-                    >
-                      {proj.desc}
-                    </motion.p>
+                    <TypingText 
+                      text={proj.desc} 
+                      className="text-lg text-zinc-400 font-light leading-relaxed min-h-[4.5em]"
+                    />
                     
                     <motion.a 
                       initial={{ opacity: 0 }}
