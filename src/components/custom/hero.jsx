@@ -39,18 +39,6 @@ export default function Hero() {
           JERICHO
         </motion.h1>
 
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1 }}
-          className="flex flex-col items-center -my-[2vw] relative z-20"
-        >
-          <span className="text-[10px] tracking-[0.4em] font-medium text-white/50 uppercase mb-4">
-            Scroll to Explore
-          </span>
-          <div className="w-[1px] h-[50px] bg-white opacity-20" />
-        </motion.div>
-
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

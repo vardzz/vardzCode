@@ -18,7 +18,7 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md mix-blend-difference"
     >
       <div className="font-black text-white text-xl uppercase tracking-tight">
-        JERICHO.
+        VARDZ
       </div>
       
       <div className="hidden md:flex gap-16">

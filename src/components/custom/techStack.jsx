@@ -29,13 +29,13 @@ export const TECH_STACK = [
     { name: "VS Code", icon: <TbBrandVscode size={50} />, color: "hover:text-[#007ACC]" },
 ];
 
-export default function TechStack() {
+export default function TechStack({ variant = "icons" }) {
   return (
-    <section className="bg-black py-20 border-y border-white/5 overflow-hidden flex items-center relative">
+    <section className="bg-black py-12 border-y border-white/5 overflow-hidden flex items-center relative">
       <div className="absolute inset-x-0 w-[200vw] sm:w-[300vw] pointer-events-none" />
       
       {/* Container for Infinite Scroll */}
-      <div className="flex w-full gap-24 relative overflow-hidden group mask-gradient items-center">
+      <div className="flex w-full gap-24 relative overflow-hidden group items-center">
         
         <motion.div
            className="flex items-center gap-24 whitespace-nowrap"
@@ -43,16 +43,22 @@ export default function TechStack() {
            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
            style={{ minWidth: "100%" }}
         >
-          {/* Double map to ensure seamless looping without snapping back visibly for most viewport sizes */}
-          {[...TECH_STACK, ...TECH_STACK, ...TECH_STACK].map((tech, idx) => (
+          {/* Double map to ensure seamless looping */}
+          {[...TECH_STACK, ...TECH_STACK].map((tech, idx) => (
              <div 
                key={idx} 
-               className={`flex items-center justify-center flex-col gap-4 text-zinc-600 transition-colors duration-500 cursor-pointer ${tech.color}`}
+               className={`flex items-center justify-center transition-colors duration-500 cursor-pointer ${variant === "icons" ? `text-zinc-600 ${tech.color}` : "text-zinc-800 hover:text-white"}`}
                title={tech.name}
              >
-               <div className="transform hover:scale-110 transition-transform duration-300">
-                 {tech.icon}
-               </div>
+               {variant === "icons" ? (
+                 <div className="transform hover:scale-110 transition-transform duration-300">
+                   {tech.icon}
+                 </div>
+               ) : (
+                 <span className="text-4xl md:text-7xl font-black uppercase tracking-tighter">
+                   {tech.name}
+                 </span>
+               )}
              </div>
           ))}
         </motion.div>

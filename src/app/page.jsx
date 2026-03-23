@@ -15,9 +15,9 @@ export default function Portfolio() {
       <Navbar />
       <main>
         <Hero />
-        <TechStack />
+        <TechStack variant="icons" />
         <About />
-        <TechStack />
+        <TechStack variant="names" />
         <Experience />
         <Projects />
       </main>
