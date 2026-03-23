@@ -31,7 +31,13 @@ export const TECH_STACK = [
 
 export default function TechStack({ variant = "icons" }) {
   return (
-    <section className="bg-black py-12 border-y border-white/5 overflow-hidden flex items-center relative">
+    <motion.section 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 1, ease: [0.2, 1, 0.3, 1] }}
+      className="bg-black py-12 border-y border-white/5 overflow-hidden flex items-center relative"
+    >
       <div className="absolute inset-x-0 w-[200vw] sm:w-[300vw] pointer-events-none" />
       
       {/* Container for Infinite Scroll */}
@@ -40,7 +46,7 @@ export default function TechStack({ variant = "icons" }) {
         <motion.div
            className="flex items-center gap-24 whitespace-nowrap"
            animate={{ x: ["0%", "-50%"] }}
-           transition={{ duration: 0, repeat: Infinity, ease: "linear" }}
+           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
            style={{ minWidth: "100%" }}
         >
           {/* Double map to ensure seamless looping */}
@@ -64,6 +70,6 @@ export default function TechStack({ variant = "icons" }) {
         </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }
