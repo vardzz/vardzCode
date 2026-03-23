@@ -25,7 +25,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-black text-white pt-32 pb-6 md:pb-12 overflow-hidden relative border-t border-white/5">
+    <footer className="w-full bg-background text-foreground pt-32 pb-6 md:pb-12 overflow-hidden relative border-t border-foreground/5 transition-colors duration-700 ease-in-out">
        <motion.div 
          variants={containerVariants}
          initial="hidden"
@@ -36,10 +36,10 @@ export default function Footer() {
           
           {/* Collaborate */}
           <motion.div variants={itemVariants}>
-            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 mb-6 block">Contact </span>
+            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-muted-foreground mb-6 block">Contact </span>
             <a 
               href="mailto:vardz@dev.com" 
-              className="text-3xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter border-b border-transparent hover:border-white transition-all duration-500 cursor-pointer"
+              className="text-3xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter border-b border-transparent hover:border-foreground transition-all duration-500 cursor-pointer"
             >
               VARDZ@DEV.COM
             </a>
@@ -47,14 +47,14 @@ export default function Footer() {
 
           {/* Networks */}
           <motion.div variants={itemVariants} className="flex flex-col md:text-right gap-6">
-            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 block">Networks</span>
+            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-muted-foreground block">Networks</span>
             <div className="flex gap-8 flex-wrap">
                {["LinkedIn", "Instagram", "Facebook", "Github"].map((net, i) => (
                  <motion.a 
                    key={i} 
                    href="#" 
-                   whileHover={{ scale: 1.1, color: "#ffffff" }}
-                   className="text-[10px] font-bold text-zinc-400 transition-colors duration-500 uppercase tracking-[0.2em] cursor-pointer"
+                   whileHover={{ scale: 1.1, color: "var(--foreground)" }}
+                   className="text-[10px] font-bold text-muted-foreground transition-colors duration-500 uppercase tracking-[0.2em] cursor-pointer"
                  >
                    {net}
                  </motion.a>
@@ -64,15 +64,15 @@ export default function Footer() {
 
        </motion.div>
 
-       {/* Massive Fluid Signature - Removed overflow-hidden and adjusted leading to fix clipping */}
+       {/* Massive Fluid Signature */}
        <motion.div 
          initial={{ opacity: 0, scale: 0.8, y: 100 }}
          whileInView={{ opacity: 1, scale: 1, y: 0 }}
          viewport={{ once: true }}
          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-         className="w-full text-center md:text-left select-none max-w-[100vw] flex justify-center mix-blend-difference mb-8 px-4 py-8"
+         className="w-full text-center md:text-left select-none max-w-[100vw] flex justify-center mb-8 px-4 py-8"
        >
-         <h1 className="text-[22vw] leading-[0.85] font-black tracking-[-0.08em] uppercase text-white w-full text-center">
+         <h1 className="text-[22vw] leading-[0.85] font-black tracking-[-0.08em] uppercase text-foreground w-full text-center">
             @VARDZ
          </h1>
        </motion.div>
@@ -83,7 +83,7 @@ export default function Footer() {
          whileInView={{ opacity: 1 }}
          viewport={{ once: true }}
          transition={{ delay: 1 }}
-         className="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center text-[8px] md:text-[10px] text-zinc-500 tracking-[0.2em] uppercase font-bold gap-4"
+         className="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center text-[8px] md:text-[10px] text-muted-foreground tracking-[0.2em] uppercase font-bold gap-4"
        >
          <span>© 2026 JERICHO VARDE. ALL RIGHTS RESERVED.</span>
          <span>LOCATED IN THE PHILIPPINES</span>

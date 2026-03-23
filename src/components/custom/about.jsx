@@ -52,7 +52,7 @@ export default function About() {
   };
 
   return (
-    <div className="relative w-full bg-black text-white">
+    <div className="relative w-full bg-background text-foreground transition-colors duration-700 ease-in-out">
       {/* ABOUT ME ("MEET VARDZ") */}
       <section id="about" className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 py-32 md:py-48 grid grid-cols-1 md:grid-cols-2 gap-20 items-center overflow-hidden">
         {/* Left Column */}
@@ -65,15 +65,15 @@ export default function About() {
         >
           <motion.span variants={itemVariants} className="text-[10px] tracking-[0.2em] uppercase font-bold text-zinc-500 mb-8 block">Identity</motion.span>
           <motion.h2 variants={itemVariants} className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-12">Meet Vardz</motion.h2>
-          <motion.p variants={itemVariants} className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed mb-16 max-w-2xl">
-            I'm Jericho Varde, a passionate <strong className="font-bold text-white">Software Engineer & Cloud Enthusiast</strong> based in the Philippines. I specialize in crafting <strong className="font-bold text-white">robust web applications</strong> and <strong className="font-bold text-white">scalable cloud architectures</strong>, blending strict technical precision with creative problem-solving to elevate digital experiences.
+          <motion.p variants={itemVariants} className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed mb-16 max-w-2xl">
+            I'm Jericho Varde, a passionate <strong className="font-bold text-foreground">Software Engineer & Cloud Enthusiast</strong> based in the Philippines. I specialize in crafting <strong className="font-bold text-foreground">robust web applications</strong> and <strong className="font-bold text-foreground">scalable cloud architectures</strong>, blending strict technical precision with creative problem-solving to elevate digital experiences.
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-wrap gap-6">
-            <button className="bg-white text-black py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:bg-zinc-200 transition-colors cursor-pointer">
+            <button className="bg-foreground text-background py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:opacity-80 transition-all cursor-pointer">
               Download CV
             </button>
-            <button className="bg-transparent text-white border border-white py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:bg-white/5 transition-colors cursor-pointer">
+            <button className="bg-transparent text-foreground border border-foreground py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:bg-foreground/5 transition-all cursor-pointer">
               My Process
             </button>
           </motion.div>
@@ -106,7 +106,7 @@ export default function About() {
                 src="/Vardz.jpg" 
                 alt="Portrait of Jericho Varde"
                 fill
-                className="object-cover grayscale contrast-125 brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-110"
+                className="object-cover grayscale brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
               />
             </motion.div>
             
@@ -115,9 +115,9 @@ export default function About() {
               style={{
                 transform: "translateZ(100px)",
               }}
-              className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 w-24 h-24 bg-black border border-white/20 flex items-center justify-center p-4 z-20"
+              className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 w-24 h-24 bg-background border border-foreground/20 flex items-center justify-center p-4 z-20"
             >
-              <span className="text-[9px] uppercase tracking-[0.2em] text-white leading-tight text-center font-bold">
+              <span className="text-[9px] uppercase tracking-[0.2em] text-foreground leading-tight text-center font-bold">
                 Software<br/>Developer<br/>2026
               </span>
             </div>

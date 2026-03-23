@@ -2,13 +2,31 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { useTheme } from "next-themes";
+import { Sun, Moon } from "lucide-react";
 
 export default function Navbar() {
-  const [isDark, setIsDark] = useState(true);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  // In a real app with next-themes, you'd integrate the actual theme flip here.
-  // For this aesthetic-only exercise, we just toggle the state visually.
-  const toggleTheme = () => setIsDark(!isDark);
+  // Avoid hydration mismatch by only rendering after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <nav className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md mix-blend-difference">
+        <Link href="/" className="font-black text-white text-xl uppercase tracking-tight cursor-pointer">
+          VARDZ
+        </Link>
+        <div className="w-14 h-7" /> {/* Placeholder for toggle */}
+      </nav>
+    );
+  }
+
+  const isDark = theme === "dark";
 
   return (
     <motion.nav 
@@ -17,9 +35,9 @@ export default function Navbar() {
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md mix-blend-difference"
     >
-      <div className="font-black text-white text-xl uppercase tracking-tight">
+      <Link href="/" className="font-black text-white text-xl uppercase tracking-tight cursor-pointer">
         VARDZ
-      </div>
+      </Link>
       
       <div className="hidden md:flex gap-16">
         {["About", "Experience", "Work"].map((link, idx) => (
@@ -35,13 +53,25 @@ export default function Navbar() {
 
       <div className="flex items-center">
         <button 
-          onClick={toggleTheme}
-          className="relative w-12 h-6 rounded-full border border-white/20 bg-transparent flex items-center px-1 overflow-hidden cursor-pointer"
+          onClick={() => setTheme(isDark ? "light" : "dark")}
+          className={`relative w-14 h-7 rounded-full flex items-center px-1 cursor-pointer transition-colors duration-500 ${
+            isDark ? "bg-white" : "bg-black"
+          }`}
           aria-label="Toggle Theme"
         >
+          {/* Icons Container */}
+          <div className="absolute inset-0 flex justify-between items-center px-1.5 pointer-events-none">
+            <Sun className={`w-3.5 h-3.5 ${isDark ? "text-black" : "text-black"}`} />
+            <Moon className={`w-3.5 h-3.5 ${isDark ? "text-black" : "text-black"}`} />
+          </div>
+
+          {/* Slider Circle */}
           <motion.div 
-            className="w-4 h-4 rounded-full bg-white"
-            animate={{ x: isDark ? 0 : 22 }}
+            className={`z-10 w-5 h-5 rounded-full ${isDark ? "bg-black" : "bg-white"}`}
+            initial={false}
+            animate={{ 
+              x: isDark ? 28 : 0 
+            }}
             transition={{ type: "spring", stiffness: 500, damping: 30 }}
           />
         </button>

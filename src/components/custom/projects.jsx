@@ -38,9 +38,9 @@ export default function Projects() {
 
   return (
     <>
-    <section id="work" className="relative bg-black text-white py-32 md:py-48 overflow-hidden">
+    <section id="work" className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-700 ease-in-out">
       {/* Background Dotted Grid */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(#ffffff22_1px,transparent_1px)] bg-[size:32px_32px] opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(var(--foreground)_1px,transparent_1px)] bg-[size:32px_32px] opacity-10 pointer-events-none" />
 
       <div className="relative z-10 max-w-[1500px] mx-auto px-6 md:px-12">
         
@@ -53,7 +53,7 @@ export default function Projects() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-32 md:mb-48"
         >
            <div>
-             <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 mb-6 block">Selected Works</span>
+             <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-muted-foreground mb-6 block">Selected Works</span>
              <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter">The Exhibition</h2>
            </div>
            
@@ -87,7 +87,7 @@ export default function Projects() {
                        whileHover={{ y: -15, scale: 1.05 }}
                        transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
                         onClick={() => setSelectedImg(proj.img)}
-                        className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-zinc-900 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-zinc-800 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.7)] z-10 group/phone cursor-pointer"
+                        className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-muted rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-muted shadow-[0_30px_60px_-12px_rgba(0,0,0,0.3)] z-10 group/phone cursor-pointer"
                      >
                         <Image 
                           src={proj.img} 
@@ -96,7 +96,7 @@ export default function Projects() {
                           quality={100}
                           priority
                           unoptimized={true}
-                          className="object-cover grayscale brightness-50 contrast-125 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700"
+                          className="object-cover grayscale brightness-50 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 group-hover:scale-105"
                         />
                      </motion.div>
 
@@ -107,7 +107,7 @@ export default function Projects() {
                        whileHover={{ y: 45, scale: 1.05 }}
                        transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
                         onClick={() => setSelectedImg(proj.imgSecondary)}
-                        className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-zinc-900 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-zinc-800 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.7)] z-20 group/phone cursor-pointer"
+                        className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-muted rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-muted shadow-[0_30px_60px_-12px_rgba(0,0,0,0.3)] z-20 group/phone cursor-pointer"
                      >
                         <Image 
                           src={proj.imgSecondary} 
@@ -116,7 +116,7 @@ export default function Projects() {
                           quality={100}
                           priority
                           unoptimized={true}
-                          className="object-cover grayscale brightness-50 contrast-125 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700"
+                          className="object-cover grayscale brightness-50 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 group-hover:scale-105"
                         />
                      </motion.div>
                    </div>
@@ -125,7 +125,7 @@ export default function Projects() {
                       whileHover={{ y: -15, scale: 1.02 }}
                       transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
                       onClick={() => setSelectedImg(proj.img)}
-                      className={`md:col-span-8 w-full aspect-video bg-zinc-900 overflow-hidden relative cursor-pointer ${isEven ? 'order-1' : 'order-1 md:order-2'}`}
+                      className={`md:col-span-8 w-full aspect-video bg-muted overflow-hidden relative cursor-pointer ${isEven ? 'order-1' : 'order-1 md:order-2'}`}
                     >
                        <Image 
                          src={proj.img}
@@ -134,7 +134,7 @@ export default function Projects() {
                          quality={100}
                          priority
                          unoptimized={true}
-                         className="object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 group-hover:scale-105"
+                         className="object-cover grayscale brightness-50 transition-all duration-1000 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 group-hover:scale-105"
                        />
                     </motion.div>
                  )}
@@ -175,7 +175,7 @@ export default function Projects() {
                       viewport={{ once: true }}
                       transition={{ delay: 0.5 }}
                       href="#" 
-                      className="inline-flex items-center gap-4 text-white text-[10px] tracking-[0.2em] font-bold uppercase hover:text-zinc-400 transition-colors pt-6 group/link cursor-pointer"
+                      className="inline-flex items-center gap-4 text-foreground text-[10px] tracking-[0.2em] font-bold uppercase hover:text-muted-foreground transition-colors pt-6 group/link cursor-pointer"
                     >
                        View Project 
                        <span className="transform group-hover/link:translate-x-2 transition-transform">&rarr;</span>

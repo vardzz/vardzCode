@@ -71,9 +71,9 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" ref={containerRef} className="relative bg-black text-white py-32 md:py-48 overflow-hidden">
+    <section id="experience" ref={containerRef} className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-700 ease-in-out">
       {/* Background Dotted Grid */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(#ffffff22_1px,transparent_1px)] bg-[size:32px_32px] opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(var(--foreground)_1px,transparent_1px)] bg-[size:32px_32px] opacity-10 pointer-events-none" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12">
         
@@ -87,10 +87,10 @@ export default function Experience() {
         <div className="space-y-40 md:space-y-64 relative">
           
           {/* Progress Connecting Line */}
-          <div className="absolute top-0 bottom-0 left-[15px] md:left-1/2 w-[1px] bg-white/10" />
+          <div className="absolute top-0 bottom-0 left-[15px] md:left-1/2 w-[1px] bg-foreground/10" />
           
           <motion.div 
-            className="absolute top-0 left-[15px] md:left-1/2 w-[1px] bg-white origin-top z-20"
+            className="absolute top-0 left-[15px] md:left-1/2 w-[1px] bg-foreground origin-top z-20"
             style={{ scaleY, height: "100%" }}
           />
 
@@ -136,7 +136,7 @@ function ExperienceItem({ exp, isEven, idx }) {
       {/* Background Massive Date Watermark with Parallax and Dynamic Opacity */}
       <motion.div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[18vw] font-black uppercase tracking-tighter whitespace-nowrap pointer-events-none select-none z-0"
-        style={{ opacity, y, color: "white" }}
+        style={{ opacity, y, color: "var(--foreground)" }}
       >
         {exp.year}
       </motion.div>
@@ -147,10 +147,10 @@ function ExperienceItem({ exp, isEven, idx }) {
         <div className={`relative w-full max-w-lg pl-12 md:pl-0 ${isEven ? 'text-left md:text-right' : 'text-left'}`}>
           {/* Animated Square Bullet */}
           <motion.div 
-            className={`absolute top-[10px] md:top-1/2 md:-translate-y-1/2 w-2 h-2 bg-white rounded-full z-30 ${isEven ? 'left-[-4px] md:right-[-84px] md:left-auto' : 'left-[-4px] md:left-[-84px]'}`}
+            className={`absolute top-[10px] md:top-1/2 md:-translate-y-1/2 w-2 h-2 bg-foreground rounded-full z-30 ${isEven ? 'left-[-4px] md:right-[-84px] md:left-auto' : 'left-[-4px] md:left-[-84px]'}`}
             style={{ 
               scale: useTransform(scrollYProgress, [0.45, 0.5, 0.55], [1, 2, 1]),
-              boxShadow: useTransform(scrollYProgress, [0.45, 0.5, 0.55], ["0px 0px 0px white", "0px 0px 20px white", "0px 0px 0px white"])
+              boxShadow: useTransform(scrollYProgress, [0.45, 0.5, 0.55], ["0px 0px 0px var(--foreground)", "0px 0px 20px var(--foreground)", "0px 0px 0px var(--foreground)"])
             }}
           />
 

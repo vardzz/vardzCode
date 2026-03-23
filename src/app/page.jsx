@@ -15,7 +15,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full bg-black text-white selection:bg-white selection:text-black font-sans">
+    <div className="relative min-h-screen w-full bg-background text-foreground selection:bg-foreground selection:text-background font-sans transition-colors duration-700 ease-in-out">
       <Navbar />
       <main>
         <Hero />
