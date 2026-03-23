@@ -41,6 +41,44 @@ export default function Hero() {
     }
   };
 
+  const [text, setText] = React.useState("");
+  const [isDeleting, setIsDeleting] = React.useState(false);
+  const [loopNum, setLoopNum] = React.useState(0);
+  const [typingSpeed, setTypingSpeed] = React.useState(150);
+
+  const words = ["Software Engineer", "Cloud Architect", "UI/UX Designer"];
+
+  React.useEffect(() => {
+    // Wait for the container's initial fade-in (2.5s) before starting to type
+    const startTimeout = setTimeout(() => {
+      const handleType = () => {
+        const i = loopNum % words.length;
+        const fullText = words[i];
+        const updatedText = isDeleting 
+          ? fullText.substring(0, text.length - 1) 
+          : fullText.substring(0, text.length + 1);
+
+        setText(updatedText);
+
+        if (!isDeleting && updatedText === fullText) {
+          setTimeout(() => setIsDeleting(true), 2000);
+          setTypingSpeed(100);
+        } else if (isDeleting && updatedText === "") {
+          setIsDeleting(false);
+          setLoopNum(loopNum + 1);
+          setTypingSpeed(150);
+        } else {
+          setTypingSpeed(isDeleting ? 50 : 100);
+        }
+      };
+
+      const timer = setTimeout(handleType, typingSpeed);
+      return () => clearTimeout(timer);
+    }, loopNum === 0 && text === "" ? 3000 : 0); // initial delay of 3s to be safe
+
+    return () => clearTimeout(startTimeout);
+  }, [text, isDeleting, loopNum, typingSpeed]);
+
   return (
     <section className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center px-4 bg-black overflow-hidden py-20">
       {/* Background Glow */}
@@ -88,6 +126,23 @@ export default function Hero() {
             </motion.span>
           ))}
         </div>
+
+        {/* Typewriter Effect */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.5, duration: 1.5 }}
+          className="flex flex-col items-center mt-12 relative z-20"
+        >
+          <span className="text-[3vw] md:text-[1.2vw] uppercase tracking-[0.5em] pl-[0.5em] font-medium text-zinc-500 min-h-[1.5em] flex items-center justify-center">
+            {text}
+            <motion.span
+              animate={{ opacity: [0, 1, 0] }}
+              transition={{ repeat: Infinity, duration: 0.8 }}
+              className="inline-block w-[2px] h-[1.2em] bg-white ml-2"
+            />
+          </span>
+        </motion.div>
       </motion.div>
     </section>
   );

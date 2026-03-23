@@ -10,6 +10,10 @@ import Projects from "@/components/custom/projects";
 import Footer from "@/components/custom/footer";
 
 export default function Portfolio() {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="relative min-h-screen w-full bg-black text-white selection:bg-white selection:text-black font-sans">
       <Navbar />
