@@ -121,11 +121,11 @@ export default function Projects() {
                      </motion.div>
                    </div>
                  ) : (
-                   <motion.div 
-                     whileHover={{ scale: 1.02 }}
-                     transition={{ duration: 0.8, ease: "easeOut" }}
+                    <motion.div 
+                      whileHover={{ y: -15, scale: 1.02 }}
+                      transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
                       onClick={() => setSelectedImg(proj.img)}
-                      className={`md:col-span-8 w-full aspect-video bg-zinc-900 overflow-hidden relative cursor-zoom-in ${isEven ? 'order-1' : 'order-1 md:order-2'}`}
+                      className={`md:col-span-8 w-full aspect-video bg-zinc-900 overflow-hidden relative cursor-pointer ${isEven ? 'order-1' : 'order-1 md:order-2'}`}
                     >
                        <Image 
                          src={proj.img}
@@ -215,10 +215,6 @@ export default function Projects() {
               className="object-contain"
             />
             
-            {/* Close Instruction */}
-            <div className="absolute top-4 right-4 text-white/40 text-[10px] uppercase tracking-[0.2em] font-bold pointer-events-none">
-              Click anywhere to close
-            </div>
           </motion.div>
         </motion.div>
       )}

@@ -49,7 +49,7 @@ export default function Footer() {
           <motion.div variants={itemVariants} className="flex flex-col md:text-right gap-6">
             <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 block">Networks</span>
             <div className="flex gap-8 flex-wrap">
-               {["Instagram", "LinkedIn", "Facebook", "Github"].map((net, i) => (
+               {["LinkedIn", "Instagram", "Facebook", "Github"].map((net, i) => (
                  <motion.a 
                    key={i} 
                    href="#" 
