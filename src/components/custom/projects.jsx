@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export default function Projects() {
+  const [selectedImg, setSelectedImg] = useState(null);
+
   const projects = [
     { 
       id: "01.",
@@ -35,6 +37,7 @@ export default function Projects() {
   ];
 
   return (
+    <>
     <section id="work" className="relative bg-black text-white py-32 md:py-48 overflow-hidden">
       {/* Background Dotted Grid */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(#ffffff22_1px,transparent_1px)] bg-[size:32px_32px] opacity-10 pointer-events-none" />
@@ -83,7 +86,8 @@ export default function Projects() {
                      <motion.div 
                        whileHover={{ y: -15, scale: 1.05 }}
                        transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
-                       className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-zinc-900 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-zinc-800 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.7)] z-10 group/phone"
+                        onClick={() => setSelectedImg(proj.img)}
+                        className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-zinc-900 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-zinc-800 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.7)] z-10 group/phone cursor-pointer"
                      >
                         <Image 
                           src={proj.img} 
@@ -102,7 +106,8 @@ export default function Projects() {
                        whileInView={{ y: 60 }}
                        whileHover={{ y: 45, scale: 1.05 }}
                        transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
-                       className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-zinc-900 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-zinc-800 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.7)] z-20 group/phone"
+                        onClick={() => setSelectedImg(proj.imgSecondary)}
+                        className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-zinc-900 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-zinc-800 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.7)] z-20 group/phone cursor-pointer"
                      >
                         <Image 
                           src={proj.imgSecondary} 
@@ -119,18 +124,19 @@ export default function Projects() {
                    <motion.div 
                      whileHover={{ scale: 1.02 }}
                      transition={{ duration: 0.8, ease: "easeOut" }}
-                     className={`md:col-span-8 w-full aspect-video bg-zinc-900 overflow-hidden relative cursor-pointer ${isEven ? 'order-1' : 'order-1 md:order-2'}`}
-                   >
-                      <Image 
-                        src={proj.img}
-                        alt={proj.title}
-                        fill
-                        quality={100}
-                        priority
-                        unoptimized={true}
-                        className="object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 group-hover:scale-105"
-                      />
-                   </motion.div>
+                      onClick={() => setSelectedImg(proj.img)}
+                      className={`md:col-span-8 w-full aspect-video bg-zinc-900 overflow-hidden relative cursor-zoom-in ${isEven ? 'order-1' : 'order-1 md:order-2'}`}
+                    >
+                       <Image 
+                         src={proj.img}
+                         alt={proj.title}
+                         fill
+                         quality={100}
+                         priority
+                         unoptimized={true}
+                         className="object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 group-hover:scale-105"
+                       />
+                    </motion.div>
                  )}
 
                  {/* Text Info */}
@@ -183,5 +189,40 @@ export default function Projects() {
 
       </div>
     </section>
-  );
+
+    {/* Lightbox Modal */}
+    <AnimatePresence>
+      {selectedImg && (
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedImg(null)}
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
+        >
+          <motion.div 
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="relative max-w-7xl w-full h-full flex items-center justify-center"
+          >
+            <Image 
+              src={selectedImg} 
+              alt="Full Project View"
+              fill
+              unoptimized={true}
+              className="object-contain"
+            />
+            
+            {/* Close Instruction */}
+            <div className="absolute top-4 right-4 text-white/40 text-[10px] uppercase tracking-[0.2em] font-bold pointer-events-none">
+              Click anywhere to close
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </>
+);
 }
