@@ -10,7 +10,9 @@ export default function Projects() {
       id: "01.",
       title: "COURT CATCHER", 
       desc: "Revolutionizing how sports enthusiasts secure their playtime through high-speed cloud infrastructure.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuClSmNfX1zatxMSQfhM2aGjIJqvt4J-ODvGzz9lr6B5vd7N4fta5pF0Rk_JwueH04IYngh-T56ysxGZwHcuK_eup1keagD1xenQXRfujNPqGTSfgg4c8kUmzHfcPEmxG3LHqYUf7wLvKI1aiA8BmzorG-bWMA0kK4Fo0wdhimJlyBvnlZBON0TiKtkDATNbUIrDt5JwGuYUzeK-1xj24y6GwkQ6GlhIPBTHbuwIQTwwaXKoou4yJQCfR0F7mQFUD-LUlw9FjZee1ALw"
+      img: "/projects/court-catcher-mockup.png",
+      imgSecondary: "/projects/court-catcher-logo.png",
+      isMobile: true
     },
     { 
       id: "02.",
@@ -71,19 +73,64 @@ export default function Projects() {
                  transition={{ duration: 1, ease: [0.2, 1, 0.3, 1] }}
                  className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-20 items-center group"
                >
-                 {/* Image */}
-                 <motion.div 
-                   whileHover={{ scale: 1.02 }}
-                   transition={{ duration: 0.8, ease: "easeOut" }}
-                   className={`md:col-span-8 w-full aspect-video bg-zinc-900 overflow-hidden relative ${isEven ? 'order-1' : 'order-1 md:order-2'}`}
-                 >
-                    <Image 
-                      src={proj.img}
-                      alt={proj.title}
-                      fill
-                      className="object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 group-hover:scale-105"
-                    />
-                 </motion.div>
+                 {/* Image / Mockup Display */}
+                 {proj.isMobile ? (
+                   <div className={`md:col-span-8 w-full flex items-center justify-center gap-6 md:gap-16 py-10 relative ${isEven ? 'order-1' : 'order-1 md:order-2'}`}>
+                     {/* Background Glow - Refined for clarity */}
+                     <div className="absolute inset-0 bg-blue-500/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10" />
+                     
+                     {/* First Phone (Mockup) */}
+                     <motion.div 
+                       whileHover={{ y: -15, scale: 1.05 }}
+                       transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
+                       className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-zinc-900 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-zinc-800 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.7)] z-10 group/phone"
+                     >
+                        <Image 
+                          src={proj.img} 
+                          alt={`${proj.title} Mockup`}
+                          fill 
+                          quality={100}
+                          priority
+                          unoptimized={true}
+                          className="object-cover grayscale brightness-50 contrast-125 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700"
+                        />
+                     </motion.div>
+
+                     {/* Second Phone (Logo) */}
+                     <motion.div 
+                       initial={{ y: 40 }}
+                       whileInView={{ y: 60 }}
+                       whileHover={{ y: 45, scale: 1.05 }}
+                       transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
+                       className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-zinc-900 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-zinc-800 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.7)] z-20 group/phone"
+                     >
+                        <Image 
+                          src={proj.imgSecondary} 
+                          alt={`${proj.title} Brand`}
+                          fill 
+                          quality={100}
+                          priority
+                          unoptimized={true}
+                          className="object-cover grayscale brightness-50 contrast-125 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700"
+                        />
+                     </motion.div>
+                   </div>
+                 ) : (
+                   <motion.div 
+                     whileHover={{ scale: 1.02 }}
+                     transition={{ duration: 0.8, ease: "easeOut" }}
+                     className={`md:col-span-8 w-full aspect-video bg-zinc-900 overflow-hidden relative cursor-pointer ${isEven ? 'order-1' : 'order-1 md:order-2'}`}
+                   >
+                      <Image 
+                        src={proj.img}
+                        alt={proj.title}
+                        fill
+                        quality={100}
+                        priority
+                        className="object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 group-hover:scale-105"
+                      />
+                   </motion.div>
+                 )}
 
                  {/* Text Info */}
                  <div className={`md:col-span-4 flex flex-col justify-center space-y-6 ${isEven ? 'order-2' : 'order-2 md:order-1'}`}>
@@ -121,7 +168,7 @@ export default function Projects() {
                       viewport={{ once: true }}
                       transition={{ delay: 0.5 }}
                       href="#" 
-                      className="inline-flex items-center gap-4 text-white text-[10px] tracking-[0.2em] font-bold uppercase hover:text-zinc-400 transition-colors pt-6 group/link"
+                      className="inline-flex items-center gap-4 text-white text-[10px] tracking-[0.2em] font-bold uppercase hover:text-zinc-400 transition-colors pt-6 group/link cursor-pointer"
                     >
                        View Project 
                        <span className="transform group-hover/link:translate-x-2 transition-transform">&rarr;</span>

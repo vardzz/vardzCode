@@ -70,10 +70,10 @@ export default function About() {
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-wrap gap-6">
-            <button className="bg-white text-black py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:bg-zinc-200 transition-colors">
+            <button className="bg-white text-black py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:bg-zinc-200 transition-colors cursor-pointer">
               Download CV
             </button>
-            <button className="bg-transparent text-white border border-white py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:bg-white/5 transition-colors">
+            <button className="bg-transparent text-white border border-white py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:bg-white/5 transition-colors cursor-pointer">
               My Process
             </button>
           </motion.div>

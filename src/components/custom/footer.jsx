@@ -36,10 +36,10 @@ export default function Footer() {
           
           {/* Collaborate */}
           <motion.div variants={itemVariants}>
-            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 mb-6 block">Collaborate</span>
+            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 mb-6 block">Contact </span>
             <a 
               href="mailto:vardz@dev.com" 
-              className="text-3xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter border-b border-transparent hover:border-white transition-all duration-500"
+              className="text-3xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter border-b border-transparent hover:border-white transition-all duration-500 cursor-pointer"
             >
               VARDZ@DEV.COM
             </a>
@@ -54,7 +54,7 @@ export default function Footer() {
                    key={i} 
                    href="#" 
                    whileHover={{ scale: 1.1, color: "#ffffff" }}
-                   className="text-[10px] font-bold text-zinc-400 transition-colors duration-500 uppercase tracking-[0.2em]"
+                   className="text-[10px] font-bold text-zinc-400 transition-colors duration-500 uppercase tracking-[0.2em] cursor-pointer"
                  >
                    {net}
                  </motion.a>
@@ -85,7 +85,7 @@ export default function Footer() {
          transition={{ delay: 1 }}
          className="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center text-[8px] md:text-[10px] text-zinc-500 tracking-[0.2em] uppercase font-bold gap-4"
        >
-         <span>© 2026 ARCHITECT OF DIGITAL ETHER. ALL RIGHTS RESERVED.</span>
+         <span>© 2026 JERICHO VARDE. ALL RIGHTS RESERVED.</span>
          <span>LOCATED IN THE PHILIPPINES</span>
        </motion.div>
     </footer>

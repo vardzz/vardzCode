@@ -24,7 +24,7 @@ export default function Experience() {
       year: "2022/06", 
       title: "SYSTEM.OUT.PRINTLN(\"HELLO WORLD\")", 
       role: "LEARNING", 
-      desc: "Initiated self-directed study in programming fundamentals, sparking a permanent pivot toward software engineering." 
+      desc: "Wrote my first line of code, and the rest is history." 
     },
     { 
       year: "2023/08", 

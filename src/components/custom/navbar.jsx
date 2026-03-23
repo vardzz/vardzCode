@@ -26,7 +26,7 @@ export default function Navbar() {
           <a 
             key={idx} 
             href={`#${link.toLowerCase()}`}
-            className="text-[10px] tracking-[0.2em] uppercase text-white hover:text-zinc-400 transition-colors duration-300 font-medium"
+            className="text-[10px] tracking-[0.2em] uppercase text-white hover:text-zinc-400 transition-colors duration-300 font-medium cursor-pointer"
           >
             {link}
           </a>
@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="flex items-center">
         <button 
           onClick={toggleTheme}
-          className="relative w-12 h-6 rounded-full border border-white/20 bg-transparent flex items-center px-1 overflow-hidden"
+          className="relative w-12 h-6 rounded-full border border-white/20 bg-transparent flex items-center px-1 overflow-hidden cursor-pointer"
           aria-label="Toggle Theme"
         >
           <motion.div 
