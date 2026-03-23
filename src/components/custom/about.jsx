@@ -52,7 +52,7 @@ export default function About() {
   };
 
   return (
-    <div className="relative w-full bg-background text-foreground transition-colors duration-700 ease-in-out">
+    <div className="relative w-full bg-background text-foreground transition-colors duration-300 ease-in-out">
       {/* ABOUT ME ("MEET VARDZ") */}
       <section id="about" className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 py-32 md:py-48 grid grid-cols-1 md:grid-cols-2 gap-20 items-center overflow-hidden">
         {/* Left Column */}
@@ -63,7 +63,7 @@ export default function About() {
            viewport={{ once: true, margin: "-100px" }}
            className="flex flex-col flex-start"
         >
-          <motion.span variants={itemVariants} className="text-[10px] tracking-[0.2em] uppercase font-bold text-zinc-500 mb-8 block">Identity</motion.span>
+          <motion.span variants={itemVariants} className="text-[10px] tracking-[0.2em] uppercase font-bold text-muted-foreground mb-8 block">Identity</motion.span>
           <motion.h2 variants={itemVariants} className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-12">Meet Vardz</motion.h2>
           <motion.p variants={itemVariants} className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed mb-16 max-w-2xl">
             I'm Jericho Varde, a passionate <strong className="font-bold text-foreground">Software Engineer & Cloud Enthusiast</strong> based in the Philippines. I specialize in crafting <strong className="font-bold text-foreground">robust web applications</strong> and <strong className="font-bold text-foreground">scalable cloud architectures</strong>, blending strict technical precision with creative problem-solving to elevate digital experiences.
@@ -93,7 +93,7 @@ export default function About() {
              }}
              onMouseMove={handleMouseMove}
              onMouseLeave={handleMouseLeave}
-             className="relative aspect-[3/4] md:aspect-square lg:aspect-[3/4] bg-zinc-900 overflow-hidden group cursor-pointer"
+             className="relative aspect-[3/4] md:aspect-square lg:aspect-[3/4] bg-muted overflow-hidden group cursor-pointer rounded-3xl md:rounded-[2.5rem]"
           >
             <motion.div 
               style={{
@@ -106,7 +106,7 @@ export default function About() {
                 src="/Vardz.jpg" 
                 alt="Portrait of Jericho Varde"
                 fill
-                className="object-cover grayscale brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
+                className="object-cover grayscale brightness-75 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
               />
             </motion.div>
             

@@ -93,16 +93,15 @@
 @layer base {
   body {
     @apply bg-background text-foreground min-h-screen w-full;
-    transition: background-color 0.7s ease-in-out, color 0.7s ease-in-out, border-color 0.7s ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
   }
   html {
     scroll-behavior: smooth;
   }
 }
 
-/* Ensure images retain their original colors and are not filtered */
+/* Ensure images can have filters (for selective grayscale) */
 img, 
 .image-placeholder {
-  filter: none !important;
   mix-blend-mode: normal !important;
-}
+}

@@ -71,7 +71,7 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" ref={containerRef} className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-700 ease-in-out">
+    <section id="experience" ref={containerRef} className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-300 ease-in-out">
       {/* Background Dotted Grid */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(var(--foreground)_1px,transparent_1px)] bg-[size:32px_32px] opacity-10 pointer-events-none" />
 
@@ -79,7 +79,7 @@ export default function Experience() {
         
         {/* Section Header */}
         <div className="mb-32">
-          <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 mb-6 block">Journey</span>
+          <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-muted-foreground mb-6 block">Career Journey</span>
           <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter">The Chronicle</h2>
         </div>
 
@@ -157,10 +157,10 @@ function ExperienceItem({ exp, isEven, idx }) {
           <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-2">
             {exp.title}
           </h3>
-          <div className="text-[10px] tracking-[0.2em] uppercase font-bold text-zinc-500 mb-6 block">
+          <div className="text-[10px] tracking-[0.2em] uppercase font-bold text-muted-foreground mb-6 block">
             {exp.role}
           </div>
-          <p className="text-lg text-zinc-400 font-light leading-relaxed">
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
             {exp.desc}
           </p>
         </div>

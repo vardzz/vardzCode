@@ -18,7 +18,11 @@ export default function Navbar() {
   if (!mounted) {
     return (
       <nav className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md mix-blend-difference">
-        <Link href="/" className="font-black text-white text-xl uppercase tracking-tight cursor-pointer">
+        <Link 
+          href="/" 
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="font-black text-foreground text-xl uppercase tracking-tight cursor-pointer"
+        >
           VARDZ
         </Link>
         <div className="w-14 h-7" /> {/* Placeholder for toggle */}
@@ -33,9 +37,13 @@ export default function Navbar() {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md mix-blend-difference"
+      className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md transition-colors duration-700 ease-in-out"
     >
-      <Link href="/" className="font-black text-white text-xl uppercase tracking-tight cursor-pointer">
+      <Link 
+        href="/" 
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="font-black text-foreground text-xl uppercase tracking-tight cursor-pointer"
+      >
         VARDZ
       </Link>
       
@@ -44,7 +52,7 @@ export default function Navbar() {
           <a 
             key={idx} 
             href={`#${link.toLowerCase()}`}
-            className="text-[10px] tracking-[0.2em] uppercase text-white hover:text-zinc-400 transition-colors duration-300 font-medium cursor-pointer"
+            className="text-[10px] tracking-[0.2em] uppercase text-foreground hover:text-muted-foreground transition-colors duration-300 font-medium cursor-pointer"
           >
             {link}
           </a>
@@ -55,19 +63,19 @@ export default function Navbar() {
         <button 
           onClick={() => setTheme(isDark ? "light" : "dark")}
           className={`relative w-14 h-7 rounded-full flex items-center px-1 cursor-pointer transition-colors duration-500 ${
-            isDark ? "bg-white" : "bg-black"
-          }`}
+            isDark ? "bg-black" : "bg-white"
+          } border border-foreground/10`}
           aria-label="Toggle Theme"
         >
           {/* Icons Container */}
           <div className="absolute inset-0 flex justify-between items-center px-1.5 pointer-events-none">
-            <Sun className={`w-3.5 h-3.5 ${isDark ? "text-black" : "text-black"}`} />
-            <Moon className={`w-3.5 h-3.5 ${isDark ? "text-black" : "text-black"}`} />
+            <Sun className={`w-3.5 h-3.5 ${isDark ? "text-white" : "text-black"}`} />
+            <Moon className={`w-3.5 h-3.5 ${isDark ? "text-white" : "text-black"}`} />
           </div>
 
           {/* Slider Circle */}
           <motion.div 
-            className={`z-10 w-5 h-5 rounded-full ${isDark ? "bg-black" : "bg-white"}`}
+            className={`z-10 w-5 h-5 rounded-full ${isDark ? "bg-white" : "bg-black"}`}
             initial={false}
             animate={{ 
               x: isDark ? 28 : 0 

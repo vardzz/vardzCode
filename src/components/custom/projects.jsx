@@ -38,7 +38,7 @@ export default function Projects() {
 
   return (
     <>
-    <section id="work" className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-700 ease-in-out">
+    <section id="work" className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-300 ease-in-out">
       {/* Background Dotted Grid */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(var(--foreground)_1px,transparent_1px)] bg-[size:32px_32px] opacity-10 pointer-events-none" />
 
@@ -96,7 +96,7 @@ export default function Projects() {
                           quality={100}
                           priority
                           unoptimized={true}
-                          className="object-cover grayscale brightness-50 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 group-hover:scale-105"
+                          className="object-cover grayscale brightness-50 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
                         />
                      </motion.div>
 
@@ -116,7 +116,7 @@ export default function Projects() {
                           quality={100}
                           priority
                           unoptimized={true}
-                          className="object-cover grayscale brightness-50 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 group-hover:scale-105"
+                          className="object-cover grayscale brightness-50 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
                         />
                      </motion.div>
                    </div>
@@ -125,7 +125,7 @@ export default function Projects() {
                       whileHover={{ y: -15, scale: 1.02 }}
                       transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
                       onClick={() => setSelectedImg(proj.img)}
-                      className={`md:col-span-8 w-full aspect-video bg-muted overflow-hidden relative cursor-pointer ${isEven ? 'order-1' : 'order-1 md:order-2'}`}
+                      className={`md:col-span-8 w-full aspect-video bg-muted overflow-hidden relative cursor-pointer rounded-2xl md:rounded-3xl ${isEven ? 'order-1' : 'order-1 md:order-2'}`}
                     >
                        <Image 
                          src={proj.img}
@@ -134,7 +134,7 @@ export default function Projects() {
                          quality={100}
                          priority
                          unoptimized={true}
-                         className="object-cover grayscale brightness-50 transition-all duration-1000 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 group-hover:scale-105"
+                         className="object-cover grayscale brightness-50 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
                        />
                     </motion.div>
                  )}

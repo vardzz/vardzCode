@@ -36,7 +36,7 @@ export default function TechStack({ variant = "icons" }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 1, ease: [0.2, 1, 0.3, 1] }}
-      className="bg-background py-12 overflow-hidden flex items-center relative transition-colors duration-700 ease-in-out"
+      className="bg-background py-12 overflow-hidden flex items-center relative transition-colors duration-300 ease-in-out"
     >
       <div className="absolute inset-x-0 w-[200vw] sm:w-[300vw] pointer-events-none" />
       
@@ -68,7 +68,7 @@ export default function TechStack({ variant = "icons" }) {
 function TechItem({ tech, variant }) {
   return (
     <div 
-      className={`flex items-center justify-center transition-colors duration-500 cursor-pointer ${variant === "icons" ? `text-foreground ${tech.color}` : "text-foreground hover:text-muted-foreground"}`}
+      className={`flex items-center justify-center transition-colors duration-300 cursor-pointer ${variant === "icons" ? `text-foreground ${tech.color}` : "text-foreground hover:text-muted-foreground"}`}
       title={tech.name}
     >
       {variant === "icons" ? (
