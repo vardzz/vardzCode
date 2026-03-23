@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Providers } from "@/components/Providers";
+import { Provider } from "@/components/custom/Provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +16,7 @@ export const metadata = {
   title: "Vardz | Cloud Enthusiast",
   description: "Portfolio of Jericho Varde, a passionate Software Engineer & Cloud Enthusiast.",
   icons: {
-    icon: "/icon.png",
+    icon: "/assets/icon.png",
   },
 };
 
@@ -26,9 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="antialiased bg-background text-foreground min-h-screen">
-        <Providers>
+        <Provider>
           {children}
-        </Providers>
+        </Provider>
       </body>
     </html>
   );

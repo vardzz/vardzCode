@@ -103,8 +103,8 @@ export default function About() {
               className="relative w-full h-full"
             >
               <Image 
-                src="/Vardz.jpg" 
-                alt="Portrait of Jericho Varde"
+                src="/assets/Vardz.png" 
+                alt="Jericho Varde"
                 fill
                 className="object-cover grayscale brightness-75 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
               />

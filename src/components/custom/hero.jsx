@@ -93,13 +93,13 @@ export default function Hero() {
         animate="visible"
         className="flex flex-col items-center justify-center text-center relative"
       >
-        {/* JERICHO - Removed overflow-hidden to prevent clipping */}
-        <div className="flex px-4 py-8">
+        {/* JERICHO - Reduced padding for tighter mobile layout */}
+        <div className="flex px-4 py-2 md:py-8">
           {"JERICHO".split("").map((letter, i) => (
             <motion.span
               key={i}
               variants={letterVariants}
-              className="text-[17vw] leading-[0.8] font-black tracking-[-0.07em] uppercase text-foreground"
+              className="text-[18vw] md:text-[17vw] leading-[0.8] font-black tracking-[-0.07em] uppercase text-foreground"
             >
               {letter}
             </motion.span>
@@ -110,17 +110,17 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1.5 }}
-          className="flex flex-col items-center -my-[4vw] relative z-20"
+          className="flex flex-col items-center -my-[6vw] md:-my-[4vw] relative z-20"
         >
         </motion.div>
 
-        {/* VARDE - Removed overflow-hidden and added vertical padding */}
-        <div className="flex px-4 py-8">
+        {/* VARDE - Reduced padding for tighter mobile layout */}
+        <div className="flex px-4 py-2 md:py-8">
           {"VARDE".split("").map((letter, i) => (
             <motion.span
               key={i}
               variants={letterVariants}
-              className="text-[17vw] leading-[0.8] font-black tracking-[-0.07em] uppercase text-foreground"
+              className="text-[18vw] md:text-[17vw] leading-[0.8] font-black tracking-[-0.07em] uppercase text-foreground"
             >
               {letter}
             </motion.span>
