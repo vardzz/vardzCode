@@ -74,7 +74,6 @@ export default function Hero() {
           transition={{ delay: 2, duration: 1.5 }}
           className="flex flex-col items-center -my-[4vw] relative z-20"
         >
-          {/* Vertical line removed while preserving negative margin for text blending */}
         </motion.div>
 
         {/* VARDE - Removed overflow-hidden and added vertical padding */}
