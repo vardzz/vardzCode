@@ -103,7 +103,7 @@ function ExperienceItem({ exp, isEven, idx }) {
         <div className={`relative w-full max-w-lg pl-12 md:pl-0 ${isEven ? 'text-left md:text-right' : 'text-left'}`}>
           {/* Animated Square Bullet */}
           <motion.div 
-            className={`absolute top-[10px] md:top-1/2 md:-translate-y-1/2 w-2 h-2 bg-white z-30 ${isEven ? 'left-[-4px] md:right-[-84px] md:left-auto' : 'left-[-4px] md:left-[-84px]'}`}
+            className={`absolute top-[10px] md:top-1/2 md:-translate-y-1/2 w-2 h-2 bg-white rounded-full z-30 ${isEven ? 'left-[-4px] md:right-[-84px] md:left-auto' : 'left-[-4px] md:left-[-84px]'}`}
             style={{ 
               scale: useTransform(scrollYProgress, [0.45, 0.5, 0.55], [1, 2, 1]),
               boxShadow: useTransform(scrollYProgress, [0.45, 0.5, 0.55], ["0px 0px 0px white", "0px 0px 20px white", "0px 0px 0px white"])
