@@ -41,35 +41,45 @@ export default function TechStack({ variant = "icons" }) {
       <div className="absolute inset-x-0 w-[200vw] sm:w-[300vw] pointer-events-none" />
       
       {/* Container for Infinite Scroll */}
-      <div className="flex w-full gap-24 relative overflow-hidden group items-center">
-        
+      <div className="relative flex overflow-hidden py-4">
         <motion.div
-           className="flex items-center gap-24 whitespace-nowrap"
-           animate={{ x: ["0%", "-50%"] }}
-           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-           style={{ minWidth: "100%" }}
+          className="flex whitespace-nowrap"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
         >
-          {/* Double map to ensure seamless looping */}
-          {[...TECH_STACK, ...TECH_STACK].map((tech, idx) => (
-             <div 
-               key={idx} 
-               className={`flex items-center justify-center transition-colors duration-500 cursor-pointer ${variant === "icons" ? `text-zinc-600 ${tech.color}` : "text-zinc-800 hover:text-white"}`}
-               title={tech.name}
-             >
-               {variant === "icons" ? (
-                 <div className="transform hover:scale-110 transition-transform duration-300">
-                   {tech.icon}
-                 </div>
-               ) : (
-                 <span className="text-4xl md:text-7xl font-black uppercase tracking-tighter">
-                   {tech.name}
-                 </span>
-               )}
-             </div>
-          ))}
+          {/* First Set */}
+          <div className="flex gap-16 md:gap-24 pr-16 md:pr-24 items-center">
+            {TECH_STACK.map((tech, idx) => (
+              <TechItem key={`set1-${idx}`} tech={tech} variant={variant} />
+            ))}
+          </div>
+          {/* Second Set (Duplicate for seamless loop) */}
+          <div className="flex gap-16 md:gap-24 pr-16 md:pr-24 items-center">
+            {TECH_STACK.map((tech, idx) => (
+              <TechItem key={`set2-${idx}`} tech={tech} variant={variant} />
+            ))}
+          </div>
         </motion.div>
-
       </div>
     </motion.section>
+  );
+}
+
+function TechItem({ tech, variant }) {
+  return (
+    <div 
+      className={`flex items-center justify-center transition-colors duration-500 cursor-pointer ${variant === "icons" ? `text-zinc-600 ${tech.color}` : "text-zinc-800 hover:text-white"}`}
+      title={tech.name}
+    >
+      {variant === "icons" ? (
+        <div className="transform hover:scale-110 transition-transform duration-300">
+          {tech.icon}
+        </div>
+      ) : (
+        <span className="text-4xl md:text-7xl font-black uppercase tracking-tighter">
+          {tech.name}
+        </span>
+      )}
+    </div>
   );
 }

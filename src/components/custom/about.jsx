@@ -118,7 +118,7 @@ export default function About() {
               className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 w-24 h-24 bg-black border border-white/20 flex items-center justify-center p-4 z-20"
             >
               <span className="text-[9px] uppercase tracking-[0.2em] text-white leading-tight text-center font-bold">
-                Software<br/>Architect<br/>2026
+                Software<br/>Developer<br/>2026
               </span>
             </div>
           </motion.div>
