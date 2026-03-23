@@ -42,7 +42,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center border-b border-white/10 px-4 bg-black overflow-hidden py-20">
+    <section className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center px-4 bg-black overflow-hidden py-20">
       {/* Background Glow */}
       <motion.div 
         className="absolute inset-0 pointer-events-none z-0"
@@ -68,14 +68,13 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Vertical Line */}
         <motion.div 
-          initial={{ opacity: 0, scaleY: 0 }}
-          animate={{ opacity: 1, scaleY: 1 }}
-          transition={{ delay: 2, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center -my-[4vw] relative z-20 origin-top"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1.5 }}
+          className="flex flex-col items-center -my-[4vw] relative z-20"
         >
-          <div className="w-[1px] h-[50px] bg-white opacity-20" />
+          {/* Vertical line removed while preserving negative margin for text blending */}
         </motion.div>
 
         {/* VARDE - Removed overflow-hidden and added vertical padding */}

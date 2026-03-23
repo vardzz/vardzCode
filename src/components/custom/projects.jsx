@@ -45,7 +45,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-32 md:mb-48 border-b border-white/10 pb-8"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-32 md:mb-48"
         >
            <div>
              <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 mb-6 block">Selected Works</span>

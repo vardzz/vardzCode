@@ -36,7 +36,7 @@ export default function TechStack({ variant = "icons" }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 1, ease: [0.2, 1, 0.3, 1] }}
-      className="bg-black py-12 border-y border-white/5 overflow-hidden flex items-center relative"
+      className="bg-black py-12 overflow-hidden flex items-center relative"
     >
       <div className="absolute inset-x-0 w-[200vw] sm:w-[300vw] pointer-events-none" />
       
