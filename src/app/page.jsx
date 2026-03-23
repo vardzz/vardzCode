@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/custom/navbar";
 import Hero from "@/components/custom/hero";
 import About from "@/components/custom/about";
@@ -8,24 +9,44 @@ import TechStack from "@/components/custom/techStack";
 import Experience from "@/components/custom/Experience";
 import Projects from "@/components/custom/projects";
 import Footer from "@/components/custom/footer";
+import LoadingScreen from "@/components/custom/loadingScreen";
 
 export default function Portfolio() {
-  React.useEffect(() => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [loading]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full bg-background text-foreground selection:bg-foreground selection:text-background font-sans transition-colors duration-700 ease-in-out">
-      <Navbar />
-      <main>
-        <Hero />
-        <TechStack variant="icons" />
-        <About />
-        <TechStack variant="names" />
-        <Experience />
-        <Projects />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <AnimatePresence mode="wait">
+        {loading && <LoadingScreen key="loading" onFinished={() => setLoading(false)} />}
+      </AnimatePresence>
+
+      <div className="relative min-h-screen w-full bg-background text-foreground selection:bg-foreground selection:text-background font-sans transition-colors duration-700 ease-in-out">
+        <Navbar />
+        <main>
+          <Hero />
+          <TechStack variant="icons" />
+          <About />
+          <TechStack variant="names" />
+          <Experience />
+          <Projects />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }
