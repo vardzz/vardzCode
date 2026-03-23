@@ -20,10 +20,54 @@ export default function Experience() {
   });
 
   const experiences = [
-    { year: "2026 / 01", title: "COURT CATCHER", role: "DEVELOPER", desc: "An application engineered for seamless sports facility reservations and management." },
-    { year: "2026 / 04", title: "HORIZON AI", role: "FRONTEND DEVELOPER", desc: "A specialized refactoring studio optimizing legacy codebases and AI integrations." },
-    { year: "2026 / 08", title: "DENTARA", role: "DEVELOPER", desc: "A cloud-native ecosystem connecting dentistry students with patients." },
-    { year: "2026 / 12", title: "ELDERKEY", role: "DEVELOPER", desc: "A secure, accessible platform engineered for specialized user needs." }
+    { 
+      year: "2022/06", 
+      title: "SYSTEM.OUT.PRINTLN(\"HELLO WORLD\")", 
+      role: "LEARNING", 
+      desc: "Initiated self-directed study in programming fundamentals, sparking a permanent pivot toward software engineering." 
+    },
+    { 
+      year: "2023/08", 
+      title: "B.S. IN COMPUTER SCIENCE", 
+      role: "ACADEMIA", 
+      desc: "Commenced formal academic training with a rigorous focus on algorithmic logic, data structures, and software architecture." 
+    },
+    { 
+      year: "2024/11", 
+      title: "E-COMMERCE PROTOTYPE", 
+      role: "WEB DEV", 
+      desc: "Engineered a foundational, responsive digital storefront utilizing semantic HTML and structural CSS to solidify core web principles." 
+    },
+    { 
+      year: "2025/10", 
+      title: "FIRST-GENERATION DIGITAL PORTFOLIO", 
+      role: "V1.0", 
+      desc: "Developed an interactive, component-based personal portfolio utilizing React.js to showcase emerging frontend capabilities." 
+    },
+    { 
+      year: "2026/01", 
+      title: "ELDERKEY", 
+      role: "DEVELOPER", 
+      desc: "Architected core interaction models and high-accessibility security standards for an elder-focused safety suite." 
+    },
+    { 
+      year: "2026/02", 
+      title: "HORIZON AI", 
+      role: "FRONTEND ENGINEER", 
+      desc: "Spearheading UI refactoring and orchestration interfaces for a next-generation neural network visualization tool." 
+    },
+    { 
+      year: "2026/02", 
+      title: "DENTARA", 
+      role: "FOUNDING ENGINEER", 
+      desc: "Architecting a cloud-native fintech and healthcare ecosystem connecting dentistry students with patients." 
+    },
+    { 
+      year: "2026/03", 
+      title: "COURT CATCHER", 
+      role: "LEAD DEVELOPER", 
+      desc: "Pioneering a high-performance reservation engine engineered for seamless sports facility bookings and management." 
+    }
   ];
 
   return (
