@@ -1,10 +1,36 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
 
 export default function About() {
+  const x = useMotionValue(0.5);
+  const y = useMotionValue(0.5);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [0, 1], [15, -15]);
+  const rotateY = useTransform(mouseXSpring, [0, 1], [-15, 15]);
+
+  const handleMouseMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+    const xPct = mouseX / width;
+    const yPct = mouseY / height;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0.5);
+    y.set(0.5);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -54,26 +80,49 @@ export default function About() {
         </motion.div>
 
         {/* Right Column */}
-        <motion.div 
-           initial={{ opacity: 0, x: 50, scale: 0.95 }}
-           whileInView={{ opacity: 1, x: 0, scale: 1 }}
-           viewport={{ once: true, margin: "-100px" }}
-           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-           className="relative aspect-[3/4] md:aspect-square lg:aspect-[3/4] bg-zinc-900 overflow-hidden group"
-        >
-          <Image 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqJ8Kn5GHk1YsWmDZtv10m9u5xMrxOVGaWccUoxL3-p-rGepMqpX9wghbnaFZ09S_FRTUyM0hPchLG3jO1i5IGBBS4qlqUKRlLWIGZVeCA1YvOnwbT2z1h3vAja4VYPY0gnN_KAn5VQLYDFN_M97nQk5pbIKZ6-842v6juK8fI7v4D0xJQzBgDZVu8if4VTDpoSGT1SzKQgMA3F30ebovlvZtRKW6HUJeIn9b8hGhImmDReNXJfKYZjJKlf_LF8IY-CxyaVs_oq82_" 
-            alt="Portrait of Jericho Varde"
-            fill
-            className="object-cover grayscale contrast-125 brightness-75 transition-transform duration-[1.5s] group-hover:scale-105"
-          />
-          {/* Micro-badge */}
-          <div className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 w-24 h-24 bg-black border border-white/20 flex items-center justify-center p-4">
-            <span className="text-[9px] uppercase tracking-[0.2em] text-white leading-tight text-center font-bold">
-              Software<br/>Architect<br/>2026
-            </span>
-          </div>
-        </motion.div>
+        <div className="perspective-[1000px]">
+          <motion.div 
+             initial={{ opacity: 0, x: 50, scale: 0.95 }}
+             whileInView={{ opacity: 1, x: 0, scale: 1 }}
+             viewport={{ once: true, margin: "-100px" }}
+             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+             style={{
+               rotateX,
+               rotateY,
+               transformStyle: "preserve-3d",
+             }}
+             onMouseMove={handleMouseMove}
+             onMouseLeave={handleMouseLeave}
+             className="relative aspect-[3/4] md:aspect-square lg:aspect-[3/4] bg-zinc-900 overflow-hidden group cursor-pointer"
+          >
+            <motion.div 
+              style={{
+                transform: "translateZ(75px)",
+                transformStyle: "preserve-3d",
+              }}
+              className="relative w-full h-full"
+            >
+              <Image 
+                src="/Vardz.jpg" 
+                alt="Portrait of Jericho Varde"
+                fill
+                className="object-cover grayscale contrast-125 brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-110"
+              />
+            </motion.div>
+            
+            {/* Micro-badge */}
+            <div 
+              style={{
+                transform: "translateZ(100px)",
+              }}
+              className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 w-24 h-24 bg-black border border-white/20 flex items-center justify-center p-4 z-20"
+            >
+              <span className="text-[9px] uppercase tracking-[0.2em] text-white leading-tight text-center font-bold">
+                Software<br/>Architect<br/>2026
+              </span>
+            </div>
+          </motion.div>
+        </div>
       </section>
     </div>
   );
