@@ -93,13 +93,13 @@ export default function Hero() {
         animate="visible"
         className="flex flex-col items-center justify-center text-center relative"
       >
-        {/* JERICHO - Reduced padding for tighter mobile layout */}
+        {/* JERICHO - Responsive text-outline (mobile only) */}
         <div className="flex px-4 py-2 md:py-8">
           {"JERICHO".split("").map((letter, i) => (
             <motion.span
               key={i}
               variants={letterVariants}
-              className="text-[18vw] md:text-[17vw] leading-[0.8] font-black tracking-[-0.07em] uppercase text-foreground"
+              className="text-[18vw] md:text-[17vw] leading-[0.8] font-black tracking-[-0.07em] uppercase text-foreground text-outline"
             >
               {letter}
             </motion.span>
@@ -114,13 +114,13 @@ export default function Hero() {
         >
         </motion.div>
 
-        {/* VARDE - Reduced padding for tighter mobile layout */}
+        {/* VARDE - Responsive text-outline (mobile only) */}
         <div className="flex px-4 py-2 md:py-8">
           {"VARDE".split("").map((letter, i) => (
             <motion.span
               key={i}
               variants={letterVariants}
-              className="text-[18vw] md:text-[17vw] leading-[0.8] font-black tracking-[-0.07em] uppercase text-foreground"
+              className="text-[18vw] md:text-[17vw] leading-[0.8] font-black tracking-[-0.07em] uppercase text-foreground text-outline"
             >
               {letter}
             </motion.span>
