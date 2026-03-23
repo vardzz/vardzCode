@@ -46,7 +46,7 @@ export default function TechStack({ variant = "icons" }) {
         <motion.div
            className="flex items-center gap-24 whitespace-nowrap"
            animate={{ x: ["0%", "-50%"] }}
-           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
            style={{ minWidth: "100%" }}
         >
           {/* Double map to ensure seamless looping */}
