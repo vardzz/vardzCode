@@ -15,7 +15,7 @@ export default function Footer() {
               href="mailto:hello@vardz.dev" 
               className="text-3xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter border-b border-transparent hover:border-white transition-all duration-500"
             >
-              HELLO@VARDZ.DEV
+              vardz@dev.com
             </a>
           </div>
 
@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="flex flex-col md:text-right gap-6">
             <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500 block">Networks</span>
             <div className="flex gap-8 flex-wrap">
-               {["Instagram", "LinkedIn", "Dribbble", "Behance"].map((net, i) => (
+               {["Instagram", "LinkedIn", "Facebook", "Github"].map((net, i) => (
                  <a 
                    key={i} 
                    href="#" 
