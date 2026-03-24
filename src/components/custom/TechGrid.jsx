@@ -30,7 +30,7 @@ export default function TechGrid() {
           </h2>
         </motion.div>
 
-        {/* The Grid with spacing and scroll animation */}
+        {/* The Grid with dynamic auto-fit for maximum responsiveness */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -44,7 +44,7 @@ export default function TechGrid() {
               }
             }
           }}
-          className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4"
+          className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-3 md:gap-4 lg:gap-6"
         >
           {TECH_STACK.map((tech, index) => (
             <TechCard key={index} tech={tech} />
