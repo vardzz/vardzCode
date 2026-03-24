@@ -39,7 +39,7 @@ export default function Footer() {
             <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-muted-foreground mb-6 block">Contact </span>
             <a 
               href="mailto:vardz@dev.com" 
-              className="text-3xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter border-b border-transparent hover:border-foreground transition-all duration-500 cursor-pointer"
+              className="text-3xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter border-b border-transparent hover:border-foreground transition-all duration-500 cursor-pointer block"
             >
               VARDZ@DEV.COM
             </a>

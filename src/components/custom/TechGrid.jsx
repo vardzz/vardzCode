@@ -116,15 +116,17 @@ export default function TechGrid() {
               <motion.div
                 key={tech.name}
                 layout
-                initial={{ opacity: 0, y: 20, scale: 0.9, filter: "blur(4px)" }}
-                whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-                viewport={{ once: true, amount: 0.2 }}
-                exit={{ opacity: 0, scale: 0.8, filter: "blur(4px)", transition: { duration: 0.3 } }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: idx * 0.05,
-                  ease: [0.22, 1, 0.36, 1] 
+                variants={{
+                  hidden: { opacity: 0, y: 20, scale: 0.9, filter: "blur(4px)" },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1, 
+                    filter: "blur(0px)",
+                    transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }
+                  }
                 }}
+                exit={{ opacity: 0, scale: 0.8, filter: "blur(4px)", transition: { duration: 0.3 } }}
               >
                 <TechCard tech={tech} />
               </motion.div>

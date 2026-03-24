@@ -90,7 +90,8 @@ export default function Hero() {
       <motion.div 
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true }}
         className="flex flex-col items-center justify-center text-center relative"
       >
         {/* JERICHO - Responsive text-outline (mobile only) */}
@@ -134,7 +135,7 @@ export default function Hero() {
           transition={{ delay: 2.5, duration: 1.5 }}
           className="flex flex-col items-center mt-12 relative z-20"
         >
-          <span className="text-[3vw] md:text-[1.2vw] uppercase tracking-[0.5em] pl-[0.5em] font-medium text-muted-foreground min-h-[1.5em] flex items-center justify-center">
+          <span className="text-[3vw] md:text-[1.2vw] uppercase tracking-[0.5em] pl-[0.5em] font-medium text-muted-foreground min-h-[1.5em] flex items-center justify-center cursor-default">
             {text}
             <motion.span
               animate={{ opacity: [0, 1, 0] }}

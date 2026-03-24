@@ -127,10 +127,16 @@ function ExperienceItem({ exp, isEven, idx }) {
   return (
     <motion.div 
       ref={itemRef}
-      initial={{ opacity: 0, y: 50, scale: 0.98, filter: "blur(4px)" }}
-      whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      variants={{
+        hidden: { opacity: 0, y: 50, scale: 0.98, filter: "blur(4px)" },
+        visible: { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1, 
+          filter: "blur(0px)",
+          transition: { duration: 1, ease: [0.215, 0.61, 0.355, 1] }
+        }
+      }}
       className="relative flex flex-col md:flex-row items-center w-full"
     >
       {/* Background Massive Date Watermark with Parallax and Dynamic Opacity */}

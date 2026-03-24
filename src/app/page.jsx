@@ -42,33 +42,38 @@ export default function Portfolio() {
       <div className="relative min-h-screen w-full bg-background text-foreground selection:bg-foreground selection:text-background font-sans transition-colors duration-700 ease-in-out">
         <Navbar />
         <main>
-          <Hero />
+          <ScrollReveal delay={0.1}>
+            <Hero />
+          </ScrollReveal>
           
-          <ScrollReveal width="100%">
+          <ScrollReveal delay={0.2} variant="fade">
             <TechStack variant="icons" />
           </ScrollReveal>
 
-          <ScrollReveal width="100%">
+          <ScrollReveal variant="up" distance={60}>
             <About />
           </ScrollReveal>
 
-          <ScrollReveal width="100%">
+          <ScrollReveal variant="up" distance={60}>
             <TechGrid />
           </ScrollReveal>
 
-          <ScrollReveal width="100%">
+          <ScrollReveal variant="fade">
             <TechStack variant="names" />
           </ScrollReveal>
 
-          <ScrollReveal width="100%">
+          <ScrollReveal variant="up" distance={60}>
             <Experience />
           </ScrollReveal>
 
-          <ScrollReveal width="100%">
+          <ScrollReveal variant="up" distance={60}>
             <Projects />
           </ScrollReveal>
         </main>
-        <Footer />
+        
+        <ScrollReveal variant="down" distance={40}>
+          <Footer />
+        </ScrollReveal>
       </div>
     </SmoothScroll>
   );

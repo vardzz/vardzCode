@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import TypingText from "@/components/custom/typingText";
 import {
   Dialog,
   DialogContent,
@@ -80,10 +81,14 @@ function ProjectItem({ proj, idx, onOpen }) {
       <div className={`md:col-span-4 flex flex-col justify-center space-y-6 ${isEven ? 'order-2' : 'order-2 md:order-1'}`}>
         <span className="text-[10px] font-bold text-zinc-500 tracking-[0.2em]">{proj.id}</span>
         <h3 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none">{proj.title}</h3>
-        <h4 className="text-lg text-zinc-400 font-light leading-relaxed">{proj.desc}</h4>
+        <TypingText 
+          text={proj.desc} 
+          delay={0.6}
+          className="text-lg text-zinc-400 font-light leading-relaxed" 
+        />
         <button 
           onClick={() => onOpen({ url: proj.img, isMobile: proj.isMobile })}
-          className="inline-flex items-center gap-4 text-foreground text-[10px] tracking-[0.2em] font-bold uppercase hover:text-muted-foreground transition-colors pt-6 group/link w-fit"
+          className="inline-flex items-center gap-4 text-foreground text-[10px] tracking-[0.2em] font-bold uppercase hover:text-muted-foreground transition-colors pt-6 group/link w-fit cursor-pointer"
         >
           View Project <span className="transform group-hover/link:translate-x-2 transition-transform">&rarr;</span>
         </button>
@@ -148,7 +153,21 @@ export default function Projects() {
         {/* Project List */}
         <div className="space-y-32 md:space-y-64">
           {projects.map((proj, idx) => (
-            <ProjectItem key={idx} proj={proj} idx={idx} onOpen={(p) => setSelectedImg(p)} />
+            <motion.div
+              key={idx}
+              variants={{
+                hidden: { opacity: 0, y: 50, scale: 0.98, filter: "blur(4px)" },
+                visible: { 
+                  opacity: 1, 
+                  y: 0, 
+                  scale: 1, 
+                  filter: "blur(0px)",
+                  transition: { duration: 1, ease: [0.215, 0.61, 0.355, 1] }
+                }
+              }}
+            >
+              <ProjectItem proj={proj} idx={idx} onOpen={(p) => setSelectedImg(p)} />
+            </motion.div>
           ))}
         </div>
       </div>
