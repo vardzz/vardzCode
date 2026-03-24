@@ -42,34 +42,40 @@ function TechCard({ tech }) {
     <Dialog>
       <DialogTrigger asChild>
         <motion.div
-          whileHover={{ zIndex: 10 }}
-          className="group relative aspect-square flex flex-col items-center justify-center bg-[#FAFAFA] dark:bg-[#0A0A0A] cursor-pointer overflow-hidden border border-black/5 dark:border-white/5 hover:border-black/20 dark:hover:border-white/20 transition-colors duration-500"
+          initial="initial"
+          whileHover="hover"
+          className="group relative aspect-square flex flex-col items-center justify-center bg-[#FAFAFA] dark:bg-[#0A0A0A] cursor-pointer overflow-hidden border border-black/40 dark:border-white/40 hover:border-black dark:hover:border-white rounded-3xl transition-all duration-500 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-white/10"
         >
           {/* Default Monochrome State & Hover Brand Color State */}
-          <motion.div
-            initial={{ opacity: 0.7, scale: 1 }}
-            whileHover={{ opacity: 1, scale: 1.05 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="flex flex-col items-center justify-center text-black/70 dark:text-white/70 group-hover:text-black dark:group-hover:text-white"
-          >
-            <div className="relative flex items-center justify-center mb-2">
-                {/* Monochrome Base Icon */}
+          <motion.div className="flex flex-col items-center justify-center text-black dark:text-zinc-500 h-full w-full">
+            <motion.div 
+              variants={{
+                initial: { opacity: 1, scale: 1 },
+                hover: { scale: 1.05 }
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative flex items-center justify-center mb-2"
+            >
+                {/* Monochrome Base Icon (Black/Zinc) */}
                 <Icon 
                     size={42} 
                     className="transition-opacity duration-300 group-hover:opacity-0"
                 />
-                {/* Brand Color Hover Icon */}
+                {/* Brand Color Hover Icon (Always Brand color) */}
                 <Icon 
                     size={42} 
                     className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${tech.color}`}
                 />
-            </div>
+            </motion.div>
 
-            {/* Tech Name Reveal on Hover */}
+            {/* Tech Name Reveal on Hover (Black in light mode, Zinc in dark) */}
             <motion.p 
-              initial={{ opacity: 0, y: 10 }}
-              whileHover={{ opacity: 1, y: 0 }}
-              className="absolute bottom-4 text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-500 opacity-0 group-hover:opacity-100 transition-all duration-300"
+              variants={{
+                initial: { opacity: 0, y: 10 },
+                hover: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+              className="absolute bottom-6 text-[10px] font-bold tracking-[0.2em] uppercase text-black dark:text-zinc-400"
             >
               {tech.name}
             </motion.p>
@@ -77,7 +83,7 @@ function TechCard({ tech }) {
         </motion.div>
       </DialogTrigger>
 
-      <DialogContent showCloseButton={false} className="border-black/10 dark:border-white/10 shadow-2xl">
+      <DialogContent showCloseButton={false} className="border-black/10 dark:border-white/10 shadow-2xl rounded-[2.5rem] p-16">
         <DialogTitle className="sr-only">Tech Details: {tech.name}</DialogTitle>
         <div className="flex flex-col items-center text-center space-y-6">
           <div className={`${tech.color} drop-shadow-sm`}>
