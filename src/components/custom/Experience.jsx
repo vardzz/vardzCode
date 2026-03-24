@@ -127,6 +127,9 @@ function ExperienceItem({ exp, isEven, idx }) {
   return (
     <motion.div 
       ref={itemRef}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
       variants={{
         hidden: { opacity: 0, y: 50, scale: 0.98, filter: "blur(4px)" },
         visible: { 

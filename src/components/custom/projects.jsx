@@ -155,6 +155,9 @@ export default function Projects() {
           {projects.map((proj, idx) => (
             <motion.div
               key={idx}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
               variants={{
                 hidden: { opacity: 0, y: 50, scale: 0.98, filter: "blur(4px)" },
                 visible: { 
@@ -162,7 +165,11 @@ export default function Projects() {
                   y: 0, 
                   scale: 1, 
                   filter: "blur(0px)",
-                  transition: { duration: 1, ease: [0.215, 0.61, 0.355, 1] }
+                  transition: { 
+                    duration: 1, 
+                    delay: idx * 0.1,
+                    ease: [0.215, 0.61, 0.355, 1] 
+                  }
                 }
               }}
             >

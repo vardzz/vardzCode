@@ -116,6 +116,8 @@ export default function TechGrid() {
               <motion.div
                 key={tech.name}
                 layout
+                initial="hidden"
+                animate="visible"
                 variants={{
                   hidden: { opacity: 0, y: 20, scale: 0.9, filter: "blur(4px)" },
                   visible: { 
@@ -123,7 +125,11 @@ export default function TechGrid() {
                     y: 0, 
                     scale: 1, 
                     filter: "blur(0px)",
-                    transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }
+                    transition: { 
+                      duration: 0.6, 
+                      delay: idx * 0.05,
+                      ease: [0.215, 0.61, 0.355, 1] 
+                    }
                   }
                 }}
                 exit={{ opacity: 0, scale: 0.8, filter: "blur(4px)", transition: { duration: 0.3 } }}
