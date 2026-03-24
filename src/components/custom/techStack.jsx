@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { SiHtml5, SiCss3, SiJavascript, SiPython, SiPhp, SiLaravel, SiGooglecloud, SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiPostgresql, SiAmazonwebservices, SiDocker, SiGit, SiFigma, SiVercel } from "react-icons/si";
+import { SiHtml5, SiCss3, SiJavascript, SiPython, SiPhp, SiLaravel, SiGooglecloud, SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiPostgresql, SiAmazonwebservices, SiDocker, SiGit, SiFigma, SiVercel, SiSupabase, SiPrisma } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import { TbBrandVscode } from "react-icons/tb";
 
@@ -27,6 +27,8 @@ export const TECH_STACK = [
     { name: "Figma", icon: SiFigma, color: "text-[#F24E1E]", category: "Design Tool", experience: "3 years of experience" },
     { name: "Vercel", icon: SiVercel, color: "text-black dark:text-white", category: "Deployment Platform", experience: "2 years of experience" },
     { name: "VS Code", icon: TbBrandVscode, color: "text-[#007ACC]", category: "Code Editor", experience: "5+ years of experience" },
+    { name: "Supabase", icon: SiSupabase, color: "text-[#3ECF8E]", category: "Backend-as-a-Service", experience: "2 years of experience" },
+    { name: "Prisma", icon: SiPrisma, color: "text-black dark:text-white", category: "ORM / Database Tool", experience: "2 years of experience" },
 ];
 
 export default function TechStack({ variant = "icons" }) {
