@@ -49,11 +49,11 @@ export default function Portfolio() {
           </ScrollReveal>
 
           <ScrollReveal width="100%">
-          <About />
+            <About />
           </ScrollReveal>
 
           <ScrollReveal width="100%">
-          <TechGrid />
+            <TechGrid />
           </ScrollReveal>
 
           <ScrollReveal width="100%">
