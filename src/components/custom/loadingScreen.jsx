@@ -34,7 +34,7 @@ const LoadingScreen = ({ onFinished }) => {
     >
       <div className="text-center">
         <motion.h1 
-          className="text-6xl md:text-8xl font-black text-black dark:text-white tracking-tighter"
+          className="text-5xl md:text-8xl font-black text-black dark:text-white tracking-tighter"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
