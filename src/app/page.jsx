@@ -11,6 +11,8 @@ import Projects from "@/components/custom/projects";
 import Footer from "@/components/custom/footer";
 import LoadingScreen from "@/components/custom/loadingScreen";
 
+import TechGrid from "@/components/custom/TechGrid";
+
 export default function Portfolio() {
   const [loading, setLoading] = useState(true);
 
@@ -41,6 +43,7 @@ export default function Portfolio() {
           <Hero />
           <TechStack variant="icons" />
           <About />
+          <TechGrid />
           <TechStack variant="names" />
           <Experience />
           <Projects />

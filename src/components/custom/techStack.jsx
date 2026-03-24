@@ -7,26 +7,26 @@ import { FaJava } from "react-icons/fa";
 import { TbBrandVscode } from "react-icons/tb";
 
 export const TECH_STACK = [
-    { name: "HTML", icon: <SiHtml5 size={50} />, color: "hover:text-[#E34F26]" },
-    { name: "CSS", icon: <SiCss3 size={50} />, color: "hover:text-[#1572B6]" },
-    { name: "JavaScript", icon: <SiJavascript size={50} />, color: "hover:text-[#F7DF1E]" },
-    { name: "Java", icon: <FaJava size={50} />, color: "hover:text-[#007396]" },
-    { name: "Python", icon: <SiPython size={50} />, color: "hover:text-[#3776AB]" },
-    { name: "PHP", icon: <SiPhp size={50} />, color: "hover:text-[#777BB4]" },
-    { name: "Laravel", icon: <SiLaravel size={50} />, color: "hover:text-[#FF2D20]" },
-    { name: "Google Cloud", icon: <SiGooglecloud size={50} />, color: "hover:text-[#4285F4]" },
-    { name: "React", icon: <SiReact size={50} />, color: "hover:text-[#61DAFB]" },
-    { name: "Next.js", icon: <SiNextdotjs size={50} />, color: "hover:text-foreground" },
-    { name: "TypeScript", icon: <SiTypescript size={50} />, color: "hover:text-[#3178C6]" },
-    { name: "Tailwind CSS", icon: <SiTailwindcss size={50} />, color: "hover:text-[#06B6D4]" },
-    { name: "Node.js", icon: <SiNodedotjs size={50} />, color: "hover:text-[#339933]" },
-    { name: "PostgreSQL", icon: <SiPostgresql size={50} />, color: "hover:text-[#4169E1]" },
-    { name: "AWS", icon: <SiAmazonwebservices size={50} />, color: "hover:text-[#FF9900]" },
-    { name: "Docker", icon: <SiDocker size={50} />, color: "hover:text-[#2496ED]" },
-    { name: "Git", icon: <SiGit size={50} />, color: "hover:text-[#F05032]" },
-    { name: "Figma", icon: <SiFigma size={50} />, color: "hover:text-[#F24E1E]" },
-    { name: "Vercel", icon: <SiVercel size={50} />, color: "hover:text-foreground" },
-    { name: "VS Code", icon: <TbBrandVscode size={50} />, color: "hover:text-[#007ACC]" },
+    { name: "HTML", icon: SiHtml5, color: "text-[#E34F26]", category: "Web Fundamentals", experience: "5+ years of experience" },
+    { name: "CSS", icon: SiCss3, color: "text-[#1572B6]", category: "Web Styling", experience: "5+ years of experience" },
+    { name: "JavaScript", icon: SiJavascript, color: "text-[#F7DF1E]", category: "Core Scripting", experience: "5+ years of experience" },
+    { name: "Java", icon: FaJava, color: "text-[#007396]", category: "Backend Development", experience: "3 years of experience" },
+    { name: "Python", icon: SiPython, color: "text-[#3776AB]", category: "Data & Scripting", experience: "4 years of experience" },
+    { name: "PHP", icon: SiPhp, color: "text-[#777BB4]", category: "Server-side Development", experience: "4 years of experience" },
+    { name: "Laravel", icon: SiLaravel, color: "text-[#FF2D20]", category: "PHP Framework", experience: "3 years of experience" },
+    { name: "Google Cloud", icon: SiGooglecloud, color: "text-[#4285F4]", category: "Cloud Infrastructure", experience: "2 years of experience" },
+    { name: "React", icon: SiReact, color: "text-[#61DAFB]", category: "Frontend Library", experience: "4 years of experience" },
+    { name: "Next.js", icon: SiNextdotjs, color: "text-black dark:text-white", category: "React Framework", experience: "2 years of experience" },
+    { name: "TypeScript", icon: SiTypescript, color: "text-[#3178C6]", category: "Typed JavaScript", experience: "3 years of experience" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-[#06B6D4]", category: "Utility CSS", experience: "4 years of experience" },
+    { name: "Node.js", icon: SiNodedotjs, color: "text-[#339933]", category: "Runtime Environment", experience: "4 years of experience" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "text-[#4169E1]", category: "Relational Database", experience: "3 years of experience" },
+    { name: "AWS", icon: SiAmazonwebservices, color: "text-[#FF9900]", category: "Cloud Services", experience: "2 years of experience" },
+    { name: "Docker", icon: SiDocker, color: "text-[#2496ED]", category: "Containerization", experience: "2 years of experience" },
+    { name: "Git", icon: SiGit, color: "text-[#F05032]", category: "Version Control", experience: "5+ years of experience" },
+    { name: "Figma", icon: SiFigma, color: "text-[#F24E1E]", category: "Design Tool", experience: "3 years of experience" },
+    { name: "Vercel", icon: SiVercel, color: "text-black dark:text-white", category: "Deployment Platform", experience: "2 years of experience" },
+    { name: "VS Code", icon: TbBrandVscode, color: "text-[#007ACC]", category: "Code Editor", experience: "5+ years of experience" },
 ];
 
 export default function TechStack({ variant = "icons" }) {
@@ -68,12 +68,12 @@ export default function TechStack({ variant = "icons" }) {
 function TechItem({ tech, variant }) {
   return (
     <div 
-      className={`flex items-center justify-center transition-colors duration-300 cursor-pointer ${variant === "icons" ? `text-foreground ${tech.color}` : "text-foreground hover:text-muted-foreground"}`}
+      className={`flex items-center justify-center transition-colors duration-300 cursor-pointer ${variant === "icons" ? `text-foreground hover:${tech.color}` : "text-foreground hover:text-muted-foreground"}`}
       title={tech.name}
     >
       {variant === "icons" ? (
         <div className="transform hover:scale-110 transition-transform duration-300">
-          {tech.icon}
+          <tech.icon size={50} />
         </div>
       ) : (
         <span className="text-4xl md:text-7xl font-black uppercase tracking-tighter">
