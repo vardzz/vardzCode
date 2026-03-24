@@ -60,7 +60,7 @@ export default function About() {
            variants={containerVariants}
            initial="hidden"
            whileInView="visible"
-           viewport={{ once: true, margin: "-100px" }}
+           viewport={{ once: true, amount: 0.2 }}
            className="flex flex-col flex-start"
         >
           <motion.span variants={itemVariants} className="text-[10px] tracking-[0.2em] uppercase font-bold text-muted-foreground mb-8 block">Identity</motion.span>
@@ -84,8 +84,8 @@ export default function About() {
           <motion.div 
              initial={{ opacity: 0, x: 50, scale: 0.95 }}
              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-             viewport={{ once: true, margin: "-100px" }}
-             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+             viewport={{ once: true, amount: 0.2 }}
+             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
              style={{
                rotateX,
                rotateY,

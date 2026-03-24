@@ -1,12 +1,85 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import TypingText from "@/components/custom/typingText";
+
+function ProjectItem({ proj, idx }) {
+  const isEven = idx % 2 === 0;
+  const itemRef = React.useRef(null);
+
+  // Individual scroll progress for each item
+  const { scrollYProgress: itemScroll } = useScroll({
+    target: itemRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Sophisticated Parallax & Reveal Transforms
+  const y = useTransform(itemScroll, [0, 1], [100, -100]);
+  const opacity = useTransform(itemScroll, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const scale = useTransform(itemScroll, [0, 0.2], [0.95, 1]);
+  const blurValue = useTransform(itemScroll, [0, 0.2], [8, 0]);
+
+  return (
+    <motion.div 
+      ref={itemRef}
+      style={{ 
+        opacity, 
+        scale,
+        filter: useTransform(blurValue, (v) => `blur(${v}px)`)
+      }}
+      className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-20 items-center group"
+    >
+      {/* Image Display with Parallax */}
+      <div className={`md:col-span-8 w-full relative ${isEven ? 'order-1' : 'order-1 md:order-2'}`}>
+        <motion.div style={{ y }} className="relative w-full">
+          {proj.isMobile ? (
+            <div className="flex items-center justify-center gap-6 md:gap-16 py-10 relative">
+              <div className="absolute inset-0 bg-blue-500/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10" />
+              
+              <motion.div 
+                whileHover={{ y: -15, scale: 1.05 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-muted rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-muted shadow-[0_30px_60px_-12px_rgba(0,0,0,0.3)] z-10 group/phone cursor-pointer"
+              >
+                <Image src={proj.img} alt={proj.title} fill unoptimized priority className="object-cover grayscale brightness-50 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105" />
+              </motion.div>
+
+              <motion.div 
+                whileHover={{ y: -15, scale: 1.05 }}
+                className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-muted rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-muted shadow-[0_30px_60px_-12px_rgba(0,0,0,0.3)] z-20 group/phone cursor-pointer"
+              >
+                <Image src={proj.imgSecondary} alt={proj.title} fill unoptimized priority className="object-cover grayscale brightness-50 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105" />
+              </motion.div>
+            </div>
+          ) : (
+            <motion.div 
+              whileHover={{ y: -10, scale: 1.01 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="w-full aspect-video bg-muted overflow-hidden relative cursor-pointer rounded-2xl md:rounded-3xl shadow-2xl"
+            >
+              <Image src={proj.img} alt={proj.title} fill unoptimized priority className="object-cover grayscale brightness-50 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105" />
+            </motion.div>
+          )}
+        </motion.div>
+      </div>
+
+      {/* Text Info */}
+      <div className={`md:col-span-4 flex flex-col justify-center space-y-6 ${isEven ? 'order-2' : 'order-2 md:order-1'}`}>
+        <span className="text-[10px] font-bold text-zinc-500 tracking-[0.2em]">{proj.id}</span>
+        <h3 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none">{proj.title}</h3>
+        <p className="text-lg text-zinc-400 font-light leading-relaxed">{proj.desc}</p>
+        <a href="#" className="inline-flex items-center gap-4 text-foreground text-[10px] tracking-[0.2em] font-bold uppercase hover:text-muted-foreground transition-colors pt-6 group/link">
+          View Project <span className="transform group-hover/link:translate-x-2 transition-transform">&rarr;</span>
+        </a>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Projects() {
   const [selectedImg, setSelectedImg] = useState(null);
+  const containerRef = React.useRef(null);
 
   const projects = [
     { 
@@ -38,183 +111,55 @@ export default function Projects() {
   ];
 
   return (
-    <>
-    <section id="work" className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-300 ease-in-out">
+    <section id="work" ref={containerRef} className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-300 ease-in-out">
       {/* Background Dotted Grid */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(var(--foreground)_1px,transparent_1px)] bg-[size:32px_32px] opacity-10 pointer-events-none" />
 
       <div className="relative z-10 max-w-[1500px] mx-auto px-6 md:px-12">
-        
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-32 md:mb-48"
         >
            <div>
              <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-muted-foreground mb-6 block">Selected Works</span>
              <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter">The Exhibition</h2>
            </div>
-           
-           <div className="hidden md:block">
-             <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-500">A Curated Collection of Digital Excellence</span>
-           </div>
         </motion.div>
 
-        {/* Staggered Grid Projects */}
+        {/* Project List */}
         <div className="space-y-32 md:space-y-64">
-          {projects.map((proj, idx) => {
-            const isEven = idx % 2 === 0;
-
-            return (
-               <motion.div 
-                 key={idx}
-                 initial={{ opacity: 0, y: 50 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true, margin: "-100px" }}
-                 transition={{ duration: 1, ease: [0.2, 1, 0.3, 1] }}
-                 className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-20 items-center group"
-               >
-                 {/* Image / Mockup Display */}
-                 {proj.isMobile ? (
-                   <div className={`md:col-span-8 w-full flex items-center justify-center gap-6 md:gap-16 py-10 relative ${isEven ? 'order-1' : 'order-1 md:order-2'}`}>
-                     {/* Background Glow - Refined for clarity */}
-                     <div className="absolute inset-0 bg-blue-500/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10" />
-                     
-                     {/* First Phone (Mockup) */}
-                     <motion.div 
-                       whileHover={{ y: -15, scale: 1.05 }}
-                       transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
-                        onClick={() => setSelectedImg(proj.img)}
-                        className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-muted rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-muted shadow-[0_30px_60px_-12px_rgba(0,0,0,0.3)] z-10 group/phone cursor-pointer"
-                     >
-                        <Image 
-                          src={proj.img} 
-                          alt={`${proj.title} Mockup`}
-                          fill 
-                          quality={100}
-                          priority
-                          unoptimized={true}
-                          className="object-cover grayscale brightness-50 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
-                        />
-                     </motion.div>
-
-                     {/* Second Phone (Logo) */}
-                     <motion.div 
-                       initial={{ y: 40 }}
-                       whileInView={{ y: 60 }}
-                       whileHover={{ y: 45, scale: 1.05 }}
-                       transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
-                        onClick={() => setSelectedImg(proj.imgSecondary)}
-                        className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-muted rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-muted shadow-[0_30px_60px_-12px_rgba(0,0,0,0.3)] z-20 group/phone cursor-pointer"
-                     >
-                        <Image 
-                          src={proj.imgSecondary} 
-                          alt={`${proj.title} Brand`}
-                          fill 
-                          quality={100}
-                          priority
-                          unoptimized={true}
-                          className="object-cover grayscale brightness-50 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
-                        />
-                     </motion.div>
-                   </div>
-                 ) : (
-                    <motion.div 
-                      whileHover={{ y: -15, scale: 1.02 }}
-                      transition={{ duration: 0.6, ease: [0.2, 1, 0.3, 1] }}
-                      onClick={() => setSelectedImg(proj.img)}
-                      className={`md:col-span-8 w-full aspect-video bg-muted overflow-hidden relative cursor-pointer rounded-2xl md:rounded-3xl ${isEven ? 'order-1' : 'order-1 md:order-2'}`}
-                    >
-                       <Image 
-                         src={proj.img}
-                         alt={proj.title}
-                         fill
-                         quality={100}
-                         priority
-                         unoptimized={true}
-                         className="object-cover grayscale brightness-50 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
-                       />
-                    </motion.div>
-                 )}
-
-                 {/* Text Info */}
-                 <div className={`md:col-span-4 flex flex-col justify-center space-y-6 ${isEven ? 'order-2' : 'order-2 md:order-1'}`}>
-                    <motion.span 
-                      initial={{ opacity: 0, x: isEven ? -20 : 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.2 }}
-                      className="text-[10px] font-bold text-zinc-500 tracking-[0.2em]"
-                    >
-                      {proj.id}
-                    </motion.span>
-                    <motion.h3 
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 }}
-                      className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none"
-                    >
-                      {proj.title}
-                    </motion.h3>
-                    <TypingText 
-                      text={proj.desc} 
-                      className="text-lg text-zinc-400 font-light leading-relaxed min-h-[4.5em]"
-                    />
-                    
-                    <motion.a 
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.5 }}
-                      href="#" 
-                      className="inline-flex items-center gap-4 text-foreground text-[10px] tracking-[0.2em] font-bold uppercase hover:text-muted-foreground transition-colors pt-6 group/link cursor-pointer"
-                    >
-                       View Project 
-                       <span className="transform group-hover/link:translate-x-2 transition-transform">&rarr;</span>
-                    </motion.a>
-                 </div>
-
-               </motion.div>
-            );
-          })}
+          {projects.map((proj, idx) => (
+            <ProjectItem key={idx} proj={proj} idx={idx} />
+          ))}
         </div>
-
       </div>
-    </section>
 
-    {/* Lightbox Modal */}
-    <AnimatePresence>
-      {selectedImg && (
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setSelectedImg(null)}
-          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
-        >
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImg && (
           <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative max-w-7xl w-full h-full flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImg(null)}
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
           >
-            <Image 
-              src={selectedImg} 
-              alt="Full Project View"
-              fill
-              unoptimized={true}
-              className="object-contain"
-            />
-            
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-7xl w-full h-full flex items-center justify-center"
+            >
+              <Image src={selectedImg} alt="Full Project View" fill unoptimized className="object-contain" />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </>
-);
+        )}
+      </AnimatePresence>
+    </section>
+  );
 }

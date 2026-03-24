@@ -12,6 +12,8 @@ import Footer from "@/components/custom/footer";
 import LoadingScreen from "@/components/custom/loadingScreen";
 
 import TechGrid from "@/components/custom/TechGrid";
+import SmoothScroll from "@/components/custom/SmoothScroll";
+import ScrollReveal from "@/components/custom/ScrollReveal";
 
 export default function Portfolio() {
   const [loading, setLoading] = useState(true);
@@ -32,7 +34,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <>
+    <SmoothScroll>
       <AnimatePresence mode="wait">
         {loading && <LoadingScreen key="loading" onFinished={() => setLoading(false)} />}
       </AnimatePresence>
@@ -41,15 +43,33 @@ export default function Portfolio() {
         <Navbar />
         <main>
           <Hero />
-          <TechStack variant="icons" />
+          
+          <ScrollReveal width="100%">
+            <TechStack variant="icons" />
+          </ScrollReveal>
+
+          <ScrollReveal width="100%">
           <About />
+          </ScrollReveal>
+
+          <ScrollReveal width="100%">
           <TechGrid />
-          <TechStack variant="names" />
-          <Experience />
-          <Projects />
+          </ScrollReveal>
+
+          <ScrollReveal width="100%">
+            <TechStack variant="names" />
+          </ScrollReveal>
+
+          <ScrollReveal width="100%">
+            <Experience />
+          </ScrollReveal>
+
+          <ScrollReveal width="100%">
+            <Projects />
+          </ScrollReveal>
         </main>
         <Footer />
       </div>
-    </>
+    </SmoothScroll>
   );
 }
