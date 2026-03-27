@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import TypingText from "@/components/custom/typingText";
+
 import {
   Dialog,
   DialogContent,
@@ -14,8 +14,13 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 function ProjectItem({ proj, idx, onOpen }) {
+  const [mounted, setMounted] = useState(false);
   const isEven = idx % 2 === 0;
   const itemRef = React.useRef(null);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Individual scroll progress for each item
   const { scrollYProgress: itemScroll } = useScroll({
@@ -28,14 +33,16 @@ function ProjectItem({ proj, idx, onOpen }) {
   const opacity = useTransform(itemScroll, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   const scale = useTransform(itemScroll, [0, 0.2], [0.95, 1]);
   const blurValue = useTransform(itemScroll, [0, 0.2], [8, 0]);
+  const blurFilter = useTransform(blurValue, (v) => `blur(${v}px)`);
+
 
   return (
     <motion.div 
       ref={itemRef}
       style={{ 
-        opacity, 
-        scale,
-        filter: useTransform(blurValue, (v) => `blur(${v}px)`)
+        opacity: mounted ? opacity : 0, 
+        scale: mounted ? scale : 0.95,
+        filter: mounted ? blurFilter : "blur(8px)"
       }}
       className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-20 items-center group"
     >
@@ -81,11 +88,9 @@ function ProjectItem({ proj, idx, onOpen }) {
       <div className={`md:col-span-4 flex flex-col justify-center space-y-6 ${isEven ? 'order-2' : 'order-2 md:order-1'}`}>
         <span className="text-[10px] font-bold text-zinc-500 tracking-[0.2em]">{proj.id}</span>
         <h3 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none">{proj.title}</h3>
-        <TypingText 
-          text={proj.desc} 
-          delay={0.6}
-          className="text-lg text-zinc-400 font-light leading-relaxed" 
-        />
+        <p className="text-lg text-zinc-400 font-light leading-relaxed">
+          {proj.desc}
+        </p>
         <button 
           onClick={() => onOpen({ url: proj.img, isMobile: proj.isMobile })}
           className="inline-flex items-center gap-4 text-foreground text-[10px] tracking-[0.2em] font-bold uppercase hover:text-muted-foreground transition-colors pt-6 group/link w-fit cursor-pointer"
@@ -97,38 +102,39 @@ function ProjectItem({ proj, idx, onOpen }) {
   );
 }
 
+const projects = [
+  { 
+    id: "01.",
+    title: "COURT CATCHER", 
+    desc: "Revolutionizing how sports enthusiasts secure their playtime through high-speed cloud infrastructure.",
+    img: "/projects/court-catcher-mockup.png",
+    imgSecondary: "/projects/court-catcher-logo.png",
+    isMobile: true
+  },
+  { 
+    id: "02.",
+    title: "HORIZON AI", 
+    desc: "A studio focused on making complex AI data tangible and visually breathtaking for engineers.",
+    img: "/projects/horizon.png"
+  },
+  { 
+    id: "03.",
+    title: "DENTARA", 
+    desc: "Closing the gap between dental practice and technology with a high-integrity patient data ecosystem.",
+    img: "/projects/dentara.png"
+  },
+  { 
+    id: "04.",
+    title: "ELDERKEY", 
+    desc: "Empathy-driven design meeting rigorous security standards for an inclusive digital safety net.",
+    img: "/projects/elderkey.png"
+  }
+];
+
 export default function Projects() {
   const [selectedImg, setSelectedImg] = useState(null);
   const containerRef = React.useRef(null);
 
-  const projects = [
-    { 
-      id: "01.",
-      title: "COURT CATCHER", 
-      desc: "Revolutionizing how sports enthusiasts secure their playtime through high-speed cloud infrastructure.",
-      img: "/projects/court-catcher-mockup.png",
-      imgSecondary: "/projects/court-catcher-logo.png",
-      isMobile: true
-    },
-    { 
-      id: "02.",
-      title: "HORIZON AI", 
-      desc: "A studio focused on making complex AI data tangible and visually breathtaking for engineers.",
-      img: "/projects/horizon.png"
-    },
-    { 
-      id: "03.",
-      title: "DENTARA", 
-      desc: "Closing the gap between dental practice and technology with a high-integrity patient data ecosystem.",
-      img: "/projects/dentara.png"
-    },
-    { 
-      id: "04.",
-      title: "ELDERKEY", 
-      desc: "Empathy-driven design meeting rigorous security standards for an inclusive digital safety net.",
-      img: "/projects/elderkey.png"
-    }
-  ];
 
   return (
     <section id="work" ref={containerRef} className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-300 ease-in-out">
