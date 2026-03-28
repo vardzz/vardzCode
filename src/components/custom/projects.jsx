@@ -85,14 +85,20 @@ function ProjectItem({ proj, idx, onOpen }) {
       </div>
 
       {/* Text Info */}
-      <div className={`md:col-span-4 flex flex-col justify-center space-y-6 ${isEven ? 'order-2' : 'order-2 md:order-1'}`}>
+      <div className={`md:col-span-4 flex flex-col justify-center space-y-4 ${isEven ? 'order-2' : 'order-2 md:order-1'}`}>
         <span className="text-[10px] font-bold text-zinc-500 tracking-[0.2em]">{proj.id}</span>
-        <h3 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none">{proj.title}</h3>
+        <h3 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.9]">{proj.title}</h3>
         <p className="text-lg text-zinc-400 font-light leading-relaxed">
           {proj.desc}
         </p>
         <button 
-          onClick={() => onOpen({ url: proj.img, isMobile: proj.isMobile })}
+          onClick={() => {
+            if (proj.link) {
+              window.open(proj.link, "_blank", "noopener,noreferrer");
+            } else {
+              onOpen({ url: proj.img, isMobile: proj.isMobile });
+            }
+          }}
           className="inline-flex items-center gap-4 text-foreground text-[10px] tracking-[0.2em] font-bold uppercase hover:text-muted-foreground transition-colors pt-6 group/link w-fit cursor-pointer"
         >
           View Project <span className="transform group-hover/link:translate-x-2 transition-transform">&rarr;</span>
@@ -128,6 +134,13 @@ const projects = [
     title: "ELDERKEY", 
     desc: "Empathy-driven design meeting rigorous security standards for an inclusive digital safety net.",
     img: "/projects/elderkey.png"
+  },
+  { 
+    id: "05.",
+    title: "ATTENDANCE CHECK", 
+    desc: "A simple QR scanning for attendance check designed for quick and secure student logging.",
+    img: "/projects/attendance-check.jfif",
+    link: "https://check-vardz.vercel.app"
   }
 ];
 
