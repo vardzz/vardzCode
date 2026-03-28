@@ -36,37 +36,19 @@ export default function Experience() {
       year: "2024/11", 
       title: "E-COMMERCE PROTOTYPE", 
       role: "WEB DEV", 
-      desc: "Engineered a foundational, responsive digital storefront utilizing semantic HTML and structural CSS to solidify core web principles." 
+      desc: "Engineered a digital storefront utilizing semantic HTML and structural CSS to solidify core web principles." 
     },
     { 
       year: "2025/10", 
       title: "FIRST-GENERATION DIGITAL PORTFOLIO", 
       role: "V1.0", 
-      desc: "Developed an interactive, component-based personal portfolio utilizing React.js to showcase emerging frontend capabilities." 
-    },
-    { 
-      year: "2026/01", 
-      title: "ELDERKEY", 
-      role: "DEVELOPER", 
-      desc: "Architected core interaction models and high-accessibility security standards for an elder-focused safety suite." 
+      desc: "Developed a personal portfolio utilizing React.js to showcase emerging frontend capabilities." 
     },
     { 
       year: "2026/02", 
-      title: "HORIZON AI", 
-      role: "FRONTEND ENGINEER", 
-      desc: "Spearheading UI refactoring and orchestration interfaces for a next-generation neural network visualization tool." 
-    },
-    { 
-      year: "2026/02", 
-      title: "DENTARA", 
-      role: "FOUNDING ENGINEER", 
-      desc: "Architecting a cloud-native fintech and healthcare ecosystem connecting dentistry students with patients." 
-    },
-    { 
-      year: "2026/03", 
-      title: "COURT CATCHER", 
-      role: "LEAD DEVELOPER", 
-      desc: "Pioneering a high-performance reservation engine engineered for seamless sports facility bookings and management." 
+      title: "DEVELOPING OUR THESIS SYSTEM | HORIZON AI", 
+      role: "THESIS PROJECT", 
+      desc: "Developing a specialized Java refactoring studio designed for automated code optimization and architectural analysis." 
     }
   ];
 
@@ -78,13 +60,13 @@ export default function Experience() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12">
         
         {/* Section Header */}
-        <div className="mb-32">
-          <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-muted-foreground mb-6 block">Career Journey</span>
-          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter">The Chronicle</h2>
+        <div className="mb-24">
+          <span className="text-[10px] tracking-[0.3em] font-bold uppercase text-muted-foreground mb-4 block opacity-60">Career Journey</span>
+          <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter">The Chronicle</h2>
         </div>
 
         {/* Timeline Items Container */}
-        <div className="space-y-40 md:space-y-64 relative">
+        <div className="space-y-32 md:space-y-48 relative">
           
           {/* Progress Connecting Line */}
           <div className="absolute top-0 bottom-0 left-[15px] md:left-1/2 w-[1px] bg-foreground/10" />
@@ -142,7 +124,7 @@ function ExperienceItem({ exp, isEven, idx }) {
       }}
       className="relative flex flex-col md:flex-row items-center w-full"
     >
-      {/* Background Massive Date Watermark with Parallax and Dynamic Opacity */}
+      {/* Background Date Watermark */}
       <motion.div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[18vw] font-black uppercase tracking-tighter whitespace-nowrap pointer-events-none select-none z-0"
         style={{ opacity, y, color: "var(--foreground)" }}
