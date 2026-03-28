@@ -176,16 +176,11 @@ function TechCard({ tech }) {
             </motion.div>
 
             {/* Tech Name Reveal on Hover */}
-            <motion.p 
-              variants={{
-                hover: { opacity: 1, y: 0 }
-              }}
-              initial={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-              className="absolute bottom-3 text-[10px] font-extrabold tracking-[0.2em] uppercase text-black dark:text-zinc-400"
+            <p 
+              className="absolute bottom-3 text-[10px] font-extrabold tracking-[0.2em] uppercase text-black dark:text-zinc-400 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
             >
               {tech.name}
-            </motion.p>
+            </p>
           </motion.div>
         </motion.div>
       </DialogTrigger>
