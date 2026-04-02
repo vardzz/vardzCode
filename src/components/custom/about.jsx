@@ -3,10 +3,18 @@
 import React from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 export default function About() {
+  const { theme, resolvedTheme } = useTheme();
+  const activeTheme = theme === "system" ? resolvedTheme : theme;
+  const [mounted, setMounted] = React.useState(false);
   const x = useMotionValue(0.5);
   const y = useMotionValue(0.5);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const mouseXSpring = useSpring(x);
   const mouseYSpring = useSpring(y);
@@ -103,8 +111,8 @@ export default function About() {
               className="relative w-full h-full"
             >
               <Image 
-                src="/assets/Vardz.png" 
-                alt="Jericho Varde"
+                src={mounted && activeTheme === "dark" ? "/assets/Vardz-dark.png" : "/assets/Vardz-light.png"}
+                alt="VARDZ"
                 fill
                 className="object-cover grayscale brightness-75 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
               />
