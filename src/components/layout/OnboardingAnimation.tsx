@@ -56,9 +56,11 @@ export default function OnboardingAnimation() {
       <div className="relative flex flex-col items-center justify-center w-full max-w-md px-6">
         <div 
           className={`transition-all duration-700 ease-out ${
-            isGlowing 
-              ? 'scale-110 opacity-100 drop-shadow-[0_0_20px_rgba(244,237,228,0.4)]' 
-              : 'scale-90 opacity-20'
+            isSlidingUp 
+              ? 'scale-75 opacity-0' 
+              : isGlowing 
+                ? 'scale-110 opacity-100 drop-shadow-[0_0_20px_rgba(244,237,228,0.4)]' 
+                : 'scale-90 opacity-20'
           }`}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -69,7 +71,7 @@ export default function OnboardingAnimation() {
           />
         </div>
         
-        <div className="h-8 mt-12 w-full text-center flex items-center justify-center">
+        <div className={`h-8 mt-12 w-full text-center flex items-center justify-center transition-opacity duration-500 ${isSlidingUp ? 'opacity-0' : 'opacity-100'}`}>
           <p className="font-mono text-text text-sm sm:text-base tracking-widest opacity-80">
             {text}
             <span 
