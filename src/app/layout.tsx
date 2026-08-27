@@ -4,6 +4,7 @@ import Navbar from "../components/layout/Navbar";
 import { ChatProvider } from "../components/layout/ChatProvider";
 import ClientLayoutWrapper from "../components/layout/ClientLayoutWrapper";
 import { TypingTestModal } from "../components/typing-test/TypingTestModal";
+import OnboardingAnimation from "../components/layout/OnboardingAnimation";
 
 export const metadata: Metadata = {
   title: "Vardz — Cloud & Software Engineer",
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <OnboardingAnimation />
         <ChatProvider>
           <ClientLayoutWrapper>
             <div className="min-h-screen transition-colors duration-300 w-full relative">
