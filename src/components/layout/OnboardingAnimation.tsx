@@ -4,10 +4,7 @@ import React, { useState, useEffect } from 'react';
 export default function OnboardingAnimation() {
   const [isVisible, setIsVisible] = useState(true);
   const [isGlowing, setIsGlowing] = useState(false);
-  const [text, setText] = useState("");
   const [isSlidingUp, setIsSlidingUp] = useState(false);
-  
-  const fullText = "> ssh root@vardz.dev... Access Granted.";
   
   useEffect(() => {
     // Use sessionStorage to only play once per session
@@ -18,30 +15,16 @@ export default function OnboardingAnimation() {
     }
 
     const timeout1 = setTimeout(() => setIsGlowing(true), 500);
-    
-    let typeInterval: NodeJS.Timeout;
-    const timeout2 = setTimeout(() => {
-      let i = 0;
-      typeInterval = setInterval(() => {
-        setText(fullText.slice(0, i + 1));
-        i++;
-        if (i === fullText.length) clearInterval(typeInterval);
-      }, 50); 
-    }, 1000);
-
-    const timeout3 = setTimeout(() => setIsSlidingUp(true), 3200);
-    
-    const timeout4 = setTimeout(() => {
+    const timeout2 = setTimeout(() => setIsSlidingUp(true), 1500);
+    const timeout3 = setTimeout(() => {
       setIsVisible(false);
       sessionStorage.setItem('onboardingPlayed', 'true');
-    }, 4000);
+    }, 2300);
 
     return () => {
       clearTimeout(timeout1);
       clearTimeout(timeout2);
       clearTimeout(timeout3);
-      clearTimeout(timeout4);
-      clearInterval(typeInterval);
     };
   }, []);
 
@@ -69,17 +52,6 @@ export default function OnboardingAnimation() {
             alt="Vardz Logo" 
             className="w-28 sm:w-32 h-auto"
           />
-        </div>
-        
-        <div className={`h-8 mt-12 w-full text-center flex items-center justify-center transition-opacity duration-500 ${isSlidingUp ? 'opacity-0' : 'opacity-100'}`}>
-          <p className="font-mono text-text text-sm sm:text-base tracking-widest opacity-80">
-            {text}
-            <span 
-              className={`inline-block w-2 h-4 ml-1 align-middle bg-text transition-opacity duration-100 ${
-                text.length === fullText.length ? 'animate-pulse' : ''
-              }`}
-            ></span>
-          </p>
         </div>
       </div>
     </div>
