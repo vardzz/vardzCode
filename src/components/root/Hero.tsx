@@ -124,7 +124,7 @@ export default function Hero() {
             <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Experience</div>
           </div>
           <div className="py-[30px] md:py-[40px] pr-[16px] md:pr-0 md:pl-[20px] border-t md:border-t-0 border-l-0 md:border-l border-line">
-            <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px]">5x</div>
+            <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px]">6x</div>
             <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Hackathons</div>
           </div>
           <div className="py-[30px] md:py-[40px] pl-[16px] md:pl-[20px] border-t md:border-t-0 border-l border-line">
