@@ -89,6 +89,20 @@ Jericho Varde's technical stack spans the following areas:
 
 ## 5. Professional Experience
 
+### IT Intern (Voluntary / WFH) — STEQ Technological Solutions and Services Inc.
+
+**Duration:** August 2026 – Present
+
+Jericho Varde serves as a voluntary IT Intern at STEQ Technological Solutions and Services Inc. in a WFH setup. His responsibilities include:
+
+- Executing digital training under UandWorld Academy modules and utilizing the UandWorld Shop platform for marketing and promotional tasks.
+- Scripting and producing video marketing content using advanced AI tools such as **Nano Banana, Veo 3, and ElevenLabs**, alongside video editors (CapCut, Clipchamp).
+- Created promotional video content for the UandAI AI Agent product **"Ads Pilot"**.
+- Managing social media web presence, planning content calendars, applying video SEO optimization strategies, and tracking engagement analytics.
+- Researching, testing, and evaluating emerging AI tools to improve marketing efficiency, content workflows, and provide technical support for digital platforms.
+
+**Key skills applied:** AI Content Creation (Veo 3, ElevenLabs, Nano Banana), Video Production, SEO Strategy, Social Media Management, Technical Support.
+
 ### Frontend AI Engineer Intern — Flyrank AI
 
 **Duration:** June 2026 – Present

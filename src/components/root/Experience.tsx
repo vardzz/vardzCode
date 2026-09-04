@@ -10,6 +10,13 @@ export default function Experience() {
       <div className="border-t border-line">
         <div className="group grid grid-cols-1 md:grid-cols-[1fr_auto] gap-[9px] md:gap-[20px] py-[22px] px-[16px] -mx-[16px] border-b border-line hover:bg-text/5 transition-colors rounded-[12px]">
           <div>
+            <div className="text-[17px] tracking-[-.03em] text-text group-hover:text-accent transition-colors">IT Intern · STEQ Technological Solutions</div>
+            <div className="text-muted text-[13px] leading-[1.6] mt-[8px] max-w-[560px]">Leveraging generative AI tools (Veo 3, ElevenLabs, Nano Banana) and video editing platforms to script, produce, and manage social media content and SEO strategies for UandWorld platforms—including producing promotional video media for UandAI's "Ads Pilot" AI Agent.</div>
+          </div>
+          <div className="text-muted font-mono text-[11px] text-left md:text-right whitespace-nowrap uppercase pt-[4px]">August 2026 — Present</div>
+        </div>
+        <div className="group grid grid-cols-1 md:grid-cols-[1fr_auto] gap-[9px] md:gap-[20px] py-[22px] px-[16px] -mx-[16px] border-b border-line hover:bg-text/5 transition-colors rounded-[12px]">
+          <div>
             <div className="text-[17px] tracking-[-.03em] text-text group-hover:text-accent transition-colors">Frontend AI Engineer · Flyrank</div>
             <div className="text-muted text-[13px] leading-[1.6] mt-[8px] max-w-[560px]">Architecting and shipping responsive frontend components using React, TypeScript, and Tailwind CSS for Fly-Rank's organic growth and SEO automation platform, using AI-assisted pair-programming workflows to accelerate scaffolding, refactoring, and deployment of production-ready UI.</div>
           </div>

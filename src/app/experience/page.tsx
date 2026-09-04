@@ -22,6 +22,55 @@ export default function ExperiencePage() {
 
             <div className="ml-[24px] md:ml-[28px] mt-[48px]">
               
+              {/* STEQ Technological Solutions */}
+              <div className="relative pl-[40px] md:pl-[48px] group pb-[64px]">
+                {/* Timeline Line */}
+                <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-line transition-all duration-300 group-hover:bg-text group-hover:shadow-[0_0_15px_var(--color-muted)] z-0"></div>
+
+                {/* Timeline Node */}
+                <div className="absolute -left-[24px] top-[-8px] bg-bg py-[8px] z-10">
+                  <div className="w-[48px] h-[48px] rounded-[14px] border border-line bg-bg flex items-center justify-center text-text font-medium text-[13px] transition-all duration-300 group-hover:border-text group-hover:shadow-[0_0_15px_var(--color-muted)]">
+                    ST
+                  </div>
+                </div>
+
+                <div className="flex flex-col md:flex-row justify-between gap-[9px] md:gap-[20px] mb-[16px]">
+                  <div>
+                    <div className="text-[17px] font-medium tracking-[-.03em] text-text">STEQ Technological Solutions and Services Inc.</div>
+                    <div className="text-muted text-[13px] mt-[4px] font-mono">Voluntary Internship (WFH)</div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-[9px] md:gap-[20px] mb-[16px]">
+                  <div>
+                    <div className="text-[15px] font-medium text-text">IT Intern</div>
+                  </div>
+                  <div className="text-muted font-mono text-[11px] text-left md:text-right whitespace-nowrap uppercase mt-1 md:mt-0">
+                    Aug 2026 — Present
+                  </div>
+                </div>
+
+                <div className="text-muted text-[13px] leading-[1.7] max-w-[600px] mb-[24px] space-y-[16px]">
+                  <p>
+                    Serving as a voluntary IT Intern at STEQ Technological Solutions and Services Inc. in a remote (WFH) capacity. My role centers around executing training under UandWorld Academy, managing social media web content, and applying SEO strategies to optimize digital media reach and engagement.
+                  </p>
+                  <p>
+                    I leverage generative AI tools—including Nano Banana, Veo 3, and ElevenLabs—alongside editing suites like CapCut and Clipchamp to script, produce, and manage video content and content calendars. Most recently, I scripted and produced a promotional video for the UandAI AI Agent product &quot;Ads Pilot&quot;, while testing emerging AI tools to continuously streamline marketing workflows and operational efficiency.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-[8px]">
+                  {['AI Content Creation', 'Veo 3', 'ElevenLabs', 'Nano Banana', 'CapCut', 'Video Production', 'SEO Strategy', 'Social Media Management', 'Technical Support'].map(skill => (
+                    <span 
+                      key={skill} 
+                      className="px-[12px] py-[4px] text-[11px] font-mono border border-line rounded-[6px] text-muted cursor-default hover:text-text hover:border-text transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
               {/* Flyrank AI */}
               <div className="relative pl-[40px] md:pl-[48px] group pb-[64px]">
                 {/* Timeline Line */}
